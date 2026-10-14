@@ -6,7 +6,7 @@
 <title>Инвестиции в Дубай | Empire City Real Estate</title>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../assets/vendor/reveal.css">
-<link rel="stylesheet" href="deck.css?v=202610150225">
+<link rel="stylesheet" href="deck.css?v=202610150300">
 </head>
 <body>
 <div class="reveal" data-theme="classic">
@@ -555,32 +555,42 @@
   <aside class="notes">Цена по прайсу застройщика от 06.10.2026, минимальная для 1BR в Garda. Уточнить цену юнита 402 и условия 25/75 перед звонком. Сервисный сбор: 30 AED за кв. фут квартиры и 7,5 AED за кв. фут балкона.</aside>
 </section>
 
-<!-- P9 ДОХОДНОСТЬ -->
-<section class="light calc-slide">
+<!-- P9 ROI -->
+<section class="light roi-slide">
   <div class="slide">
-    <p class="label">Доходность от аренды</p>
-    <h2>Сколько приносит квартира</h2>
-    <div class="calc" data-price="2842000" data-sc="18471">
-      <div class="calc-in">
-        <label for="rent">Годовая аренда, AED</label>
-        <output class="rent-out">198 940</output>
-        <input id="rent" type="range" min="120000" max="300000" step="20" value="198940">
-        <div class="chips">
-          <button type="button" data-y="6">6%</button>
-          <button type="button" data-y="7" class="on">7%</button>
-          <button type="button" data-y="8">8%</button>
+    <p class="label">Расчёт ROI</p>
+    <h2>Сколько вы заработаете</h2>
+    <div class="roi" data-ep="2842000" data-dld="0.04" data-fee="5000" data-sc="18471" data-noc="4000" data-com="0.02">
+      <div class="roi-in">
+        <div class="tabs" role="tablist">
+          <button type="button" role="tab" data-mode="rent" class="on" aria-selected="true">Аренда</button>
+          <button type="button" role="tab" data-mode="resale" aria-selected="false">Перепродажа</button>
         </div>
-        <p class="src">Сценарии по средней валовой доходности жилья в Дубае 6–8%. Передвиньте ползунок, чтобы задать свою ставку аренды</p>
+        <div class="mode m-rent">
+          <label for="r-rent">Годовая аренда, AED</label>
+          <output class="big-in o-rent">198 940</output>
+          <input id="r-rent" type="range" min="120000" max="300000" step="20" value="198940">
+          <div class="chips" data-for="rent"><button type="button" data-y="6">6%</button><button type="button" data-y="7" class="on">7%</button><button type="button" data-y="8">8%</button></div>
+          <p class="src">Сценарии по средней валовой доходности жилья в Дубае 6–8%. Ползунком задайте свою ставку аренды</p>
+        </div>
+        <div class="mode m-resale" hidden>
+          <label for="r-sp">Цена продажи, AED</label>
+          <output class="big-in o-sp">3 410 400</output>
+          <input id="r-sp" type="range" min="2842000" max="3978800" step="100" value="3410400">
+          <div class="chips" data-for="sp"><button type="button" data-g="10">+10%</button><button type="button" data-g="20" class="on">+20%</button><button type="button" data-g="30">+30%</button></div>
+          <label class="mt">Оплачено к моменту продажи</label>
+          <div class="chips" data-for="paid"><button type="button" data-p="0.24">24%</button><button type="button" data-p="0.35" class="on">35%</button></div>
+          <p class="src">Перепродажа разрешена после оплаты 24%. 35%: весь платёж до сдачи дома</p>
+        </div>
       </div>
-      <div class="calc-out">
-        <div><span>Валовая доходность</span><b class="o-gross">7,0%</b></div>
-        <div><span>Сервисный сбор в год</span><b class="o-sc">−18 471</b></div>
-        <div><span>Чистый доход в год</span><b class="o-net">180 469</b></div>
-        <div class="big"><span>Чистая доходность</span><b class="o-nety">6,4%</b></div>
+      <div class="roi-out">
+        <div class="formula"><span class="f-name">ROI</span><span class="f-eq">=</span><span class="f-frac"><span class="f-top">Прибыль</span><span class="f-bot">Вложения</span></span><span class="f-eq">× 100%</span></div>
+        <dl class="rows"></dl>
+        <div class="result"><span>ROI</span><b class="o-roi">6,1%</b></div>
       </div>
     </div>
   </div>
-  <aside class="notes">Сервисный сбор уже включает еженедельную уборку и замену белья, это снижает расходы на краткосрочную аренду. Перед звонком уточнить реальные ставки аренды 1BR на Dubai Islands.</aside>
+  <aside class="notes">Расчёт по методике компании. Аренда: (аренда − сервисный сбор) / (цена + DLD 4% + админ сбор). Перепродажа: (цена продажи − цена покупки − DLD − сбор − NOC − комиссия 2%) / (оплаченные взносы + DLD + сбор). NOC 4 000 AED: уточнить у MR8. Цена продажи это сценарий, не прогноз застройщика.</aside>
 </section>
 
 <!-- P10 СЛЕДУЮЩИЙ ШАГ -->
@@ -740,22 +750,45 @@
     });
     c.addEventListener('mouseleave', () => set(null));
   });
-  // rental calculator
-  const fmt = n => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  // ROI calculator (company method)
+  const fmt = n => (n < 0 ? '−' : '') + Math.round(Math.abs(n)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   const pct = n => (Math.round(n * 10) / 10).toFixed(1).replace('.', ',') + '%';
-  document.querySelectorAll('.calc').forEach(c => {
-    const price = +c.dataset.price, sc = +c.dataset.sc, r = c.querySelector('input');
+  document.querySelectorAll('.roi').forEach(c => {
+    const d = c.dataset, ep = +d.ep, dld = ep * +d.dld, fee = +d.fee, sc = +d.sc, noc = +d.noc, comR = +d.com;
+    const rent = c.querySelector('#r-rent'), sp = c.querySelector('#r-sp');
+    let mode = 'rent', paid = 0.35;
+    const row = (k, v, cls) => '<div class="' + (cls || '') + '"><dt>' + k + '</dt><dd>' + v + '</dd></div>';
     const upd = () => {
-      const rent = +r.value, net = rent - sc;
-      c.querySelector('.rent-out').textContent = fmt(rent);
-      c.querySelector('.o-gross').textContent = pct(rent / price * 100);
-      c.querySelector('.o-sc').textContent = '−' + fmt(sc);
-      c.querySelector('.o-net').textContent = fmt(net);
-      c.querySelector('.o-nety').textContent = pct(net / price * 100);
-      c.querySelectorAll('.chips button').forEach(b => b.classList.toggle('on', Math.abs(price * b.dataset.y / 100 - rent) < 1500));
+      let rows = '', roi;
+      if (mode === 'rent') {
+        const r = +rent.value, profit = r - sc, inv = ep + dld + fee;
+        c.querySelector('.o-rent').textContent = fmt(r);
+        rows = row('Аренда в год', fmt(r)) + row('Сервисный сбор', fmt(-sc)) + row('Прибыль', fmt(profit), 'sum')
+          + row('Цена покупки', fmt(ep)) + row('DLD 4%', fmt(dld)) + row('Админ сбор', fmt(fee)) + row('Вложения', fmt(inv), 'sum');
+        roi = profit / inv * 100;
+        c.querySelectorAll('[data-for="rent"] button').forEach(b => b.classList.toggle('on', Math.abs(ep * b.dataset.y / 100 - r) < 1500));
+      } else {
+        const s = +sp.value, com = s * comR, inst = ep * paid, profit = s - ep - dld - fee - noc - com, inv = inst + dld + fee;
+        c.querySelector('.o-sp').textContent = fmt(s);
+        rows = row('Цена продажи', fmt(s)) + row('Цена покупки', fmt(-ep)) + row('DLD 4% и админ сбор', fmt(-(dld + fee))) + row('NOC и комиссия 2%', fmt(-(noc + com))) + row('Прибыль', fmt(profit), 'sum')
+          + row('Взносы ' + Math.round(paid * 100) + '%', fmt(inst)) + row('DLD и админ сбор', fmt(dld + fee)) + row('Вложения', fmt(inv), 'sum');
+        roi = profit / inv * 100;
+        c.querySelectorAll('[data-for="sp"] button').forEach(b => b.classList.toggle('on', Math.abs(ep * (1 + b.dataset.g / 100) - s) < 2000));
+        c.querySelectorAll('[data-for="paid"] button').forEach(b => b.classList.toggle('on', +b.dataset.p === paid));
+      }
+      c.querySelector('.rows').innerHTML = rows;
+      c.querySelector('.o-roi').textContent = pct(roi);
     };
-    r.addEventListener('input', upd);
-    c.querySelectorAll('.chips button').forEach(b => b.addEventListener('click', () => { r.value = Math.round(price * b.dataset.y / 100); upd(); }));
+    c.querySelectorAll('.tabs button').forEach(b => b.addEventListener('click', () => {
+      mode = b.dataset.mode;
+      c.querySelectorAll('.tabs button').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-selected', x === b); });
+      c.querySelector('.m-rent').hidden = mode !== 'rent'; c.querySelector('.m-resale').hidden = mode !== 'resale';
+      upd();
+    }));
+    rent.addEventListener('input', upd); sp.addEventListener('input', upd);
+    c.querySelectorAll('[data-for="rent"] button').forEach(b => b.addEventListener('click', () => { rent.value = Math.round(ep * b.dataset.y / 100); upd(); }));
+    c.querySelectorAll('[data-for="sp"] button').forEach(b => b.addEventListener('click', () => { sp.value = Math.round(ep * (1 + b.dataset.g / 100)); upd(); }));
+    c.querySelectorAll('[data-for="paid"] button').forEach(b => b.addEventListener('click', () => { paid = +b.dataset.p; upd(); }));
     upd();
   });
   // pause video when leaving its slide
