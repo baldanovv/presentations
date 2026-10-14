@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="deck.css?v=202610150510">
 </head>
 <body>
-<div class="reveal" data-theme="classic">
+<div class="reveal" data-theme="empire">
 <div class="slides">
 
 <!-- 01 ОБЛОЖКА -->
@@ -764,7 +764,7 @@
   const themes = ['classic', 'empire'];
   const fromUrl = new URLSearchParams(location.search).get('theme');
   let saved = null;
-  try { saved = localStorage.getItem('deck-theme'); } catch (e) {}
+  try { saved = localStorage.getItem('deck-theme-v2'); } catch (e) {}
   const tones = { classic: { light: '#F2EBDC', dark: '#241B14' }, empire: { light: '#ECB479', dark: '#0E0E0E' } };
   const setTheme = t => {
     deck.dataset.theme = t;
@@ -772,9 +772,9 @@
       if (!s.hasAttribute('data-background-image')) s.setAttribute('data-background-color', tones[t][s.classList.contains('dark') ? 'dark' : 'light']);
     });
     if (window.Reveal && Reveal.isReady && Reveal.isReady()) Reveal.sync();
-    try { localStorage.setItem('deck-theme', t); } catch (e) {}
+    try { localStorage.setItem('deck-theme-v2', t); } catch (e) {}
   };
-  setTheme(themes.includes(fromUrl) ? fromUrl : (themes.includes(saved) ? saved : 'classic'));
+  setTheme(themes.includes(fromUrl) ? fromUrl : (themes.includes(saved) ? saved : 'empire'));
   const toggle = () => setTheme(deck.dataset.theme === 'classic' ? 'empire' : 'classic');
   document.querySelector('.theme-btn').addEventListener('click', toggle);
 
