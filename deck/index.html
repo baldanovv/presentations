@@ -6,7 +6,7 @@
 <title>Инвестиции в Дубай | Empire City Real Estate</title>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../assets/vendor/reveal.css">
-<link rel="stylesheet" href="deck.css?v=202610150510">
+<link rel="stylesheet" href="deck.css?v=202610150250">
 </head>
 <body>
 <div class="reveal" data-theme="empire">
@@ -746,9 +746,8 @@
 </div>
 </div>
 
-<button class="theme-btn" type="button" title="Сменить стиль (клавиша T)">Стиль</button>
 
-<script src="../assets/vendor/reveal.js"></script>
+<script src="../assets/vendor/reveal.js?v=2"></script>
 <script src="../assets/vendor/notes.js"></script>
 <script>
   // page numbers and footer
@@ -774,9 +773,7 @@
     if (window.Reveal && Reveal.isReady && Reveal.isReady()) Reveal.sync();
     try { localStorage.setItem('deck-theme-v2', t); } catch (e) {}
   };
-  setTheme(themes.includes(fromUrl) ? fromUrl : (themes.includes(saved) ? saved : 'empire'));
-  const toggle = () => setTheme(deck.dataset.theme === 'classic' ? 'empire' : 'classic');
-  document.querySelector('.theme-btn').addEventListener('click', toggle);
+  setTheme('empire');
 
 
   // ===== Motion: staggered entrances, Ken Burns, count-up =====
@@ -825,7 +822,18 @@
   };
 
   // phones and portrait screens: vertical layout, scroll through slides
-  const portrait = window.matchMedia('(orientation: portrait) and (max-width: 1100px)').matches || new URLSearchParams(location.search).has('portrait');
+  const qs = new URLSearchParams(location.search);
+  const isPortrait = () => {
+    const w = window.innerWidth || document.documentElement.clientWidth, h = window.innerHeight || document.documentElement.clientHeight;
+    const phone = /iPhone|iPod|Android.+Mobile|Mobile Safari/i.test(navigator.userAgent) || Math.min(screen.width, screen.height) < 820;
+    return (phone && h > w) || (h > w * 1.15 && w < 1100);
+  };
+  const portrait = qs.has('portrait') || (!qs.has('landscape') && isPortrait());
+  // re-layout when the phone is rotated
+  let lastMode = portrait;
+  const recheck = () => setTimeout(() => { const now = qs.has('portrait') || (!qs.has('landscape') && isPortrait()); if (now !== lastMode) location.reload(); }, 300);
+  window.addEventListener('orientationchange', recheck);
+  window.addEventListener('resize', recheck);
   if (portrait) {
     document.documentElement.classList.add('portrait');
     // aerial slide: show the full image as a block so the labels stay in place
@@ -844,8 +852,7 @@
     view: portrait ? 'scroll' : null, scrollActivationWidth: null, scrollProgress: 'auto', scrollLayout: 'full',
     center: false, hash: true, transition: 'fade', transitionSpeed: 'fast',
     backgroundTransition: 'fade', controls: true, progress: true,
-    plugins: [RevealNotes],
-    keyboard: { 84: toggle }
+    plugins: [RevealNotes]
   });
   // city map: legend, zones and badges highlight each other; key districts light up with their parent centre
   document.querySelectorAll('.mapwrap').forEach(c => {
