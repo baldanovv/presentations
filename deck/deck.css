@@ -20,8 +20,8 @@
 .reveal { font-family: var(--body); font-variant-numeric: lining-nums; }
 .reveal * { font-variant-numeric: lining-nums; }
 .reveal .slides { text-align: left; }
-.reveal .slides > section { padding: 0; height: 1080px; width: 1920px; color: var(--ink); }
-.reveal .slides > section:not([data-background-image]) { background: var(--bg); }
+.reveal .slides section { padding: 0; height: 1080px; width: 1920px; color: var(--ink); }
+.reveal .slides section:not([data-background-image]) { background: var(--bg); }
 .reveal .slide { position: absolute; inset: 0; padding: 104px 128px 120px; box-sizing: border-box; }
 .reveal p, .reveal li, .reveal span, .reveal td, .reveal th { font-family: var(--body); color: inherit; }
 .reveal h1, .reveal h2, .reveal h4 { font-family: var(--display); font-weight: var(--d-weight); text-transform: var(--d-case); letter-spacing: var(--d-track); color: var(--ink); text-shadow: none; margin: 0; }
@@ -556,7 +556,7 @@
 .reveal .mg-out .src { font-size: 15px; margin-top: 12px; line-height: 1.45; }
 
 /* ===== Portrait / phone layout ===== */
-html.portrait .reveal .slides > section { width: 1080px; height: 1920px; }
+html.portrait .reveal .slides section { width: 1080px; height: 1920px; }
 html.portrait .reveal .slide { padding: 120px 72px 140px; }
 html.portrait .reveal h1, html.portrait .reveal .h1 { font-size: calc(92px * var(--d-scale)); }
 html.portrait .reveal h2 { font-size: calc(66px * var(--d-scale)); }
@@ -665,3 +665,25 @@ html.portrait .reveal .area-panel .facts span { font-size: 28px; }
 html.portrait .reveal .gallery figcaption { font-size: 24px; }
 html.portrait .reveal .cta-steps li { font-size: 32px; }
 html.portrait .reveal .dmap { display: block; }
+
+/* portrait: readable map labels, no footer overlap */
+html.portrait .reveal .foot { display: none; }
+html.portrait .reveal .slide { padding-bottom: 80px; }
+html.portrait .reveal .dmap .mark text { font-size: 30px; }
+html.portrait .reveal .dmap .place { font-size: 30px; }
+html.portrait .reveal .dmap .badge .bname { font-size: 28px; }
+html.portrait .reveal .dmap .badge .num { font-size: 22px; }
+html.portrait .reveal .dmap .sea-label { font-size: 22px; }
+html.portrait .reveal .dmap .hotlabel { font-size: 36px; }
+html.portrait .reveal .dmap .mark .mbg { r: 22px; }
+html.portrait .reveal .imap .imark text { font-size: 24px; }
+html.portrait .reveal .imap .gpin text { font-size: 30px; }
+html.portrait .reveal .imap .badge .num.big { font-size: 30px; }
+html.portrait .reveal .imap .badge circle { r: 28px; }
+html.portrait .reveal .gallery.g4 figure { height: 330px; }
+html.portrait .reveal .gallery.g3 figure { height: 260px; }
+html.portrait .reveal .brands { gap: 20px 32px; margin-top: 28px; }
+html.portrait .reveal .life-cols { gap: 32px; margin-top: 28px; }
+html.portrait .reveal .life-cols .ticks li { font-size: 27px; margin-bottom: 6px; }
+html.portrait .reveal .dmap:not(.imap) .place { display: none; }
+html.portrait .reveal .dmap:not(.imap) .mark:nth-child(5) text { display: none; }

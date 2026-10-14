@@ -6,7 +6,7 @@
 <title>Инвестиции в Дубай | Empire City Real Estate</title>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../assets/vendor/reveal.css">
-<link rel="stylesheet" href="deck.css?v=202610150250">
+<link rel="stylesheet" href="deck.css?v=202610150310">
 </head>
 <body>
 <div class="reveal" data-theme="empire">
@@ -721,27 +721,6 @@
   <aside class="notes">Вопросы клиенту: Как вам проект? С чем хотели бы сравнить? Что для вас важнее: доход или жизнь? Работа с возражениями. Если готов: «Давайте забронируем, пришлите паспорт».</aside>
 </section>
 
-<!-- 15 ИСТОЧНИКИ -->
-<section class="light sources">
-  <div class="slide">
-    <p class="label">Источники данных</p>
-    <ul>
-      <li>Dubai Land Department, итоги рынка 2025 (Gulf News)</li>
-      <li>ValuStrat Price Index, декабрь 2025</li>
-      <li>Dubai Data and Statistics Establishment, население на сентябрь 2026</li>
-      <li>Dubai Department of Economy and Tourism, туризм 2025</li>
-      <li>Dubai Airports, пассажиропоток DXB 2025</li>
-      <li>Henley Private Wealth Migration Report 2025</li>
-      <li>Numbeo Safety Index 2026</li>
-      <li>Dubai 2040 Urban Master Plan, Government of Dubai (Khaleej Times)</li>
-      <li>Карта: © OpenStreetMap contributors (ODbL)</li>
-      <li>Mr. Eight Development: брошюра, фактшит, планировки Villa del Garda, прайс брокера от 06.10.2026</li>
-      <li>Dubai Islands: Khaleej Times, октябрь 2025; материалы Empire City по Dubai Islands</li>
-      <li>Property Finder, условия Golden Visa, 2026</li>
-    </ul>
-    <p class="src">Информация носит ознакомительный характер и не является финансовой рекомендацией.</p>
-  </div>
-</section>
 
 </div>
 </div>
@@ -844,7 +823,8 @@
     });
     setTheme(deck.dataset.theme);
     // maps: crop to the useful part, legend goes below
-    document.querySelectorAll('.dmap:not(.imap)').forEach(m => m.setAttribute('viewBox', '0 0 1220 700'));
+    document.querySelectorAll('.dmap:not(.imap)').forEach(m => m.setAttribute('viewBox', '130 20 1090 680'));
+    document.querySelectorAll('.lg-desc').forEach(d => d.textContent = d.textContent.replace('Наведите на', 'Нажмите на'));
     document.querySelectorAll('.imap').forEach(m => m.setAttribute('viewBox', '250 0 820 770'));
   }
   Reveal.initialize({
