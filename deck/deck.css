@@ -456,3 +456,23 @@
 .reveal .result { display: flex; justify-content: space-between; align-items: baseline; margin-top: 10px; }
 .reveal .result span { font-size: 26px; font-weight: 700; }
 .reveal .result b { font-family: var(--num-font); font-weight: var(--num-weight); font-size: calc(96px * var(--d-scale)); color: var(--accent); line-height: 1; }
+
+/* why Dubai Islands */
+.reveal .why-di .stats { margin-top: 56px; }
+.reveal .chain { display: flex; gap: 0; margin-top: 64px; }
+.reveal .chain li { flex: 1; display: flex; align-items: center; gap: 16px; font-size: 25px; color: #F2EBDC; padding: 18px 24px 18px 0; position: relative; }
+.reveal .chain li + li { padding-left: 40px; }
+.reveal .chain li + li::before { content: ''; position: absolute; left: 0; top: 50%; width: 24px; height: 2px; background: #F3CF8E; }
+.reveal .chain i { font-style: normal; flex: none; width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid #F3CF8E; color: #F3CF8E; display: grid; place-items: center; font-weight: 700; font-size: 20px; }
+.reveal .why-di .punch { color: #F2EBDC; border-color: rgba(242,235,220,.25); }
+/* five islands */
+.reveal .isl { display: grid; grid-template-columns: 860px 1fr; gap: 72px; margin-top: 44px; align-items: start; }
+.reveal .isl-map { margin: 0; }
+.reveal .isl-map img { width: 100%; display: block; margin: 0; }
+.reveal .isl-list li { display: grid; grid-template-columns: 64px 1fr; gap: 18px; padding: 16px 0; border-top: 1px solid var(--line); }
+.reveal .isl-list i { font-style: normal; font-family: var(--num-font); font-weight: var(--num-weight); font-size: calc(48px * var(--d-scale)); color: var(--muted); line-height: 1; }
+.reveal .isl-list b { display: block; font-size: 26px; font-weight: 600; margin-bottom: 4px; }
+.reveal .isl-list span { font-size: 20px; color: var(--muted); line-height: 1.4; }
+.reveal .isl-list li.here { background: var(--panel); padding-left: 16px; margin-left: -16px; }
+.reveal .isl-list li.here i { color: var(--accent); }
+.reveal .isl-list li.here span { color: var(--ink); }
