@@ -169,43 +169,66 @@ def roads(name, tol):
 road_major = roads('roads1.json', 0.6)
 road_minor = roads('roads2.json', 0.8)
 
-# ---------- zones ----------
-def blob(pts, grow=1.2):
-    poly = Polygon([proj(lo, la) for la, lo in pts]).convex_hull
-    return rot(poly.buffer(-5, join_style=1).buffer(6.2, join_style=1, quad_segs=16))
+# ---------- zones: whole city split into the 5 centres (schematic Voronoi) ----------
+from shapely.geometry import MultiPoint
+from shapely.ops import voronoi_diagram
 
-centres = {
-    '1': blob([(25.245, 55.276), (25.272, 55.284), (25.288, 55.318), (25.272, 55.343), (25.246, 55.322)]),
-    '2': blob([(25.178, 55.255), (25.199, 55.262), (25.204, 55.289), (25.186, 55.300), (25.172, 55.279)]),
-    '3': blob([(25.066, 55.128), (25.083, 55.124), (25.094, 55.141), (25.082, 55.156), (25.068, 55.148)]),
-    '4': blob([(24.951, 55.136), (24.971, 55.138), (24.975, 55.161), (24.958, 55.168), (24.948, 55.152)]),
-    '5': blob([(25.110, 55.371), (25.130, 55.372), (25.134, 55.394), (25.116, 55.400), (25.108, 55.386)]),
-}
-centre_anchor = {'1': (55.305, 25.262), '2': (55.270, 25.184), '3': (55.140, 25.080), '4': (55.152, 24.961), '5': (55.385, 25.121)}
+seeds = {'1': (55.305, 25.262), '2': (55.270, 25.184), '3': (55.140, 25.080), '4': (55.152, 24.961), '5': (55.385, 25.121)}
+seed_pts = {z: rot(Point(proj(*ll))) for z, ll in seeds.items()}
+vor = voronoi_diagram(MultiPoint(list(seed_pts.values())), envelope=view.buffer(50))
+cells = {}
+for cell in vor.geoms:
+    for z, p in seed_pts.items():
+        if cell.contains(p):
+            cells[z] = cell
+GAP = 1.6 / s  # ~1.6 px gap between zones
+land_main = land_v.buffer(0)
+zones = {z: c.intersection(land_main).buffer(-GAP) for z, c in cells.items()}
+
+badge = {'1': (55.350, 25.292), '2': (55.245, 25.150), '3': (55.190, 25.068), '4': (55.085, 24.985), '5': (55.445, 25.170)}
+names = {'1': 'Deira и Bur Dubai', '2': 'Downtown и Business Bay', '3': 'Dubai Marina и JBR', '4': 'Expo City', '5': 'Dubai Silicon Oasis'}
 
 dlrc_c = Point(proj(55.3845, 25.0905))
-dlrc = rot(dlrc_c.buffer(9, quad_segs=3))  # ~1 km schematic outline
-key = {'di': di_r.buffer(0.15, join_style=1), 'dlrc': dlrc}
+dlrc = rot(dlrc_c.buffer(9, quad_segs=3))
+key = {'di': (di_r.buffer(0.15, join_style=1), '1'), 'dlrc': (dlrc, '5')}
 key_anchor = {'di': (55.300, 25.318), 'dlrc': (55.3845, 25.0905)}
 
+# icon glyphs, 24x24
+ICONS = {
+    'burj': '<path d="M12 .5 L12.9 8 L14.4 11.5 L15.6 23 L8.4 23 L9.6 11.5 L11.1 8 Z"/>',
+    'sail': '<path d="M7 23 V2.5 H8.4 Q19.5 9 16.5 23 Z M9.6 6 V21 H14.8 Q16.6 11 9.6 6 Z" fill-rule="evenodd"/>',
+    'atlantis': '<path d="M2.5 23 V11 H7 V6.5 H17 V11 H21.5 V23 H14 V17 Q12 13.5 10 17 V23 Z"/>',
+    'plane': '<path d="M21 15.5v-2l-7.5-4.7V3.6a1.5 1.5 0 0 0-3 0v5.2L3 13.5v2l7.5-2.3v5L8.5 19.7v1.6L12 20.3l3.5 1v-1.6l-2-1.5v-5z"/>',
+    'globe': '<path d="M12 2.5a9.5 9.5 0 1 0 0 19a9.5 9.5 0 1 0 0-19Zm0 1.6c1.6 1.7 2.6 4.6 2.6 7.9s-1 6.2-2.6 7.9c-1.6-1.7-2.6-4.6-2.6-7.9s1-6.2 2.6-7.9Zm-7.9 7.1h15.8v1.6H4.1Z" fill-rule="evenodd"/>',
+    'wheel': '<path d="M12 2.5a8.5 8.5 0 1 0 0 17a8.5 8.5 0 1 0 0-17Zm0 1.6a6.9 6.9 0 1 1 0 13.8a6.9 6.9 0 1 1 0-13.8Z M11.3 4.5h1.4v15h-1.4Z M4.5 10.3h15v1.4h-15Z M9 23h6l-3-3.5Z" fill-rule="evenodd"/>',
+    'frame': '<path d="M5 2 H19 V23 H5 Z M8 5.5 V19 H16 V5.5 Z" fill-rule="evenodd"/>',
+    'dome': '<path d="M2.5 21 Q12 1 21.5 21 Z M6.5 19 Q12 7.5 17.5 19 Z" fill-rule="evenodd"/><path d="M1.5 21h21v1.6h-21z"/>',
+}
 landmarks = [
-    ('Burj Khalifa', 55.2744, 25.1972, 'right'),
-    ('Burj Al Arab', 55.1853, 25.1412, 'above'),
-    ('Atlantis', 55.1171, 25.1304, 'above'),
-    ('Аэропорт DXB', 55.3657, 25.2532, 'below'),
-    ('Global Village', 55.3080, 25.0718, 'below'),
+    ('Burj Khalifa', 'burj', 55.2744, 25.1972, 'right'),
+    ('Burj Al Arab', 'sail', 55.1853, 25.1412, 'above'),
+    ('Atlantis', 'atlantis', 55.1171, 25.1304, 'above'),
+    ('Ain Dubai', 'wheel', 55.1225, 25.0794, 'left'),
+    ('Dubai Frame', 'frame', 55.3004, 25.2353, 'left'),
+    ('Аэропорт DXB', 'plane', 55.3657, 25.2532, 'right'),
+    ('Global Village', 'globe', 55.3080, 25.0718, 'below'),
+    ('Expo 2020', 'dome', 55.1500, 24.9637, 'below'),
 ]
 island_labels = [
-    ('Palm Jumeirah', 55.138, 25.118),
+    ('Palm Jumeirah', 55.150, 25.112),
     ('Palm Jebel Ali', 54.990, 25.000),
     ('The World', 55.172, 25.222),
-    ('Dubai Creek', 55.338, 25.218),
 ]
 
 out = []
 out.append(f'<svg class="dmap" viewBox="0 0 {W} {H}" role="img" aria-label="Карта Дубая: пять городских центров 2040, Dubai Islands и DLRC">')
+out.append('<defs>' + ''.join(f'<symbol id="i-{k}" viewBox="0 0 24 24">{v}</symbol>' for k, v in ICONS.items()) + '</defs>')
 out.append(f'<rect class="sea" x="0" y="0" width="{W}" height="{H}"/>')
 out.append(f'<path class="land" fill-rule="evenodd" d="{path_of(land_v, 0.5)}"/>')
+out.append('<g class="zones">')
+for z in sorted(zones):
+    out.append(f'<path class="zone centre z{z}" data-z="c{z}" fill-rule="evenodd" d="{path_of(zones[z], 0.5)}"/>')
+out.append('</g>')
 for wp in water_paths:
     out.append(f'<path class="water" fill-rule="evenodd" d="{wp}"/>')
 if road_minor:
@@ -215,31 +238,34 @@ if road_major:
 for name, lo, la in island_labels:
     x, y = tx(*rpt(lo, la))
     out.append(f'<text class="place" x="{x:.0f}" y="{y:.0f}">{name}</text>')
-out.append('<g class="zones">')
-for z, g in centres.items():
-    x, y = tx(*rpt(*centre_anchor[z]))
-    out.append(f'<g class="zone centre" data-z="c{z}"><path pathLength="1" fill-rule="evenodd" d="{path_of(g.intersection(view), 0.3)}"/>'
-               f'<circle cx="{x:.1f}" cy="{y:.1f}" r="17"/><text class="num" x="{x:.1f}" y="{y + 5.5:.1f}">0{z}</text></g>')
 labels = {'di': 'Dubai Islands', 'dlrc': 'DLRC'}
-offs = {'di': (-215, -2), 'dlrc': (70, 7)}
-for z, g in key.items():
+offs = {'di': (-215, -2), 'dlrc': (-92, 7)}
+out.append('<g class="hots">')
+for z, (g, parent) in key.items():
     x, y = tx(*rpt(*key_anchor[z]))
     ox, oy = offs[z]
-    out.append(f'<g class="zone hot" data-z="{z}"><path pathLength="1" fill-rule="evenodd" d="{path_of(g.intersection(view), 0.25)}"/>'
+    out.append(f'<g class="zone hot" data-z="{z}" data-parent="c{parent}"><path pathLength="1" fill-rule="evenodd" d="{path_of(g.intersection(view), 0.25)}"/>'
                f'<circle class="ping" cx="{x:.1f}" cy="{y:.1f}" r="10"/><circle class="dot" cx="{x:.1f}" cy="{y:.1f}" r="7"/>'
                f'<text class="hotlabel" x="{x + ox:.1f}" y="{y + oy:.1f}">{labels[z]}</text></g>')
 out.append('</g>')
 out.append('<g class="marks">')
-for name, lo, la, pos in landmarks:
+for name, icon, lo, la, pos in landmarks:
     x, y = tx(*rpt(lo, la))
     if not (0 < x < W and 0 < y < H):
         continue
-    dx, dy, anchor = {'below': (0, 24, 'middle'), 'above': (0, -14, 'middle'), 'right': (12, 5, 'start')}[pos]
-    out.append(f'<g class="mark"><circle cx="{x:.1f}" cy="{y:.1f}" r="3.5"/><text x="{x + dx:.1f}" y="{y + dy:.1f}" text-anchor="{anchor}">{name}</text></g>')
+    dx, dy, anchor = {'below': (0, 36, 'middle'), 'above': (0, -24, 'middle'), 'right': (24, 6, 'start'), 'left': (-24, 6, 'end')}[pos]
+    out.append(f'<g class="mark"><circle class="mbg" cx="{x:.1f}" cy="{y:.1f}" r="16"/><use href="#i-{icon}" x="{x - 10:.1f}" y="{y - 10:.1f}" width="20" height="20"/>'
+               f'<text x="{x + dx:.1f}" y="{y + dy:.1f}" text-anchor="{anchor}">{name}</text></g>')
+out.append('</g>')
+out.append('<g class="badges">')
+for z in sorted(badge):
+    x, y = tx(*rpt(*badge[z]))
+    out.append(f'<g class="badge" data-z="c{z}"><circle cx="{x:.1f}" cy="{y:.1f}" r="19"/><text class="num" x="{x:.1f}" y="{y + 5:.1f}">0{z}</text>'
+               f'<text class="bname" x="{x:.1f}" y="{y + 40:.1f}">{names[z]}</text></g>')
 out.append('</g>')
 out.append(f'<text class="sea-label" x="{FITW*0.45:.0f}" y="36">Персидский залив</text>')
 out.append(f'<text class="credit" x="{W - 8}" y="{H - 8}">© OpenStreetMap contributors</text>')
 out.append('</svg>')
 svg = '\n'.join(out)
 open(OUT, 'w').write(svg)
-print('angle', round(ANG, 1), 'bytes', len(svg), 'islands DI', len(getattr(dubai_islands, 'geoms', [dubai_islands])))
+print('zones', {z: round(g.area) for z, g in zones.items()}, 'bytes', len(svg))

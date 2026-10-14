@@ -278,3 +278,44 @@
   html:not(.print-pdf) .reveal section.present .dmap .zone.hot .ping { animation: ping 2.2s ease-out 3s infinite; }
   html:not(.print-pdf) .reveal section.present .dmap .mark, html:not(.print-pdf) .reveal section.present .dmap .place { animation: landin .8s ease-out 1.2s both; }
 }
+
+/* ===== City map v2: full partition, icons ===== */
+.reveal[data-theme="classic"] .map-slide { --z1:#D2A86A; --z2:#B9785A; --z3:#7FA3A8; --z4:#9AA36E; --z5:#A98AA3; }
+.reveal[data-theme="empire"] .map-slide { --z1:#ECB479; --z2:#D9825A; --z3:#7FAFB5; --z4:#A7B36F; --z5:#B494B0; }
+.reveal .dmap path.zone.centre { stroke-width: 1.2; fill-opacity: .2; stroke-opacity: .7; transition: fill-opacity .35s, opacity .35s; }
+.reveal .dmap path.zone.z1 { fill: var(--z1); stroke: var(--z1); }
+.reveal .dmap path.zone.z2 { fill: var(--z2); stroke: var(--z2); }
+.reveal .dmap path.zone.z3 { fill: var(--z3); stroke: var(--z3); }
+.reveal .dmap path.zone.z4 { fill: var(--z4); stroke: var(--z4); }
+.reveal .dmap path.zone.z5 { fill: var(--z5); stroke: var(--z5); }
+.reveal .dmap path.zone.centre.on { fill-opacity: .48; stroke-opacity: 1; stroke-width: 2.4; }
+.reveal .dmap .badge { cursor: pointer; transition: opacity .35s; }
+.reveal .dmap .badge circle { fill: var(--map-sea); stroke-width: 2; }
+.reveal .dmap .badge .num { font: 700 15px var(--body); text-anchor: middle; }
+.reveal .dmap .badge .bname { font: 600 16px var(--body); text-anchor: middle; fill: var(--ink); opacity: .9; paint-order: stroke; stroke: var(--map-sea); stroke-width: 4px; stroke-linejoin: round; }
+.reveal .dmap .badge[data-z="c1"] circle { stroke: var(--z1); } .reveal .dmap .badge[data-z="c1"] .num { fill: var(--z1); }
+.reveal .dmap .badge[data-z="c2"] circle { stroke: var(--z2); } .reveal .dmap .badge[data-z="c2"] .num { fill: var(--z2); }
+.reveal .dmap .badge[data-z="c3"] circle { stroke: var(--z3); } .reveal .dmap .badge[data-z="c3"] .num { fill: var(--z3); }
+.reveal .dmap .badge[data-z="c4"] circle { stroke: var(--z4); } .reveal .dmap .badge[data-z="c4"] .num { fill: var(--z4); }
+.reveal .dmap .badge[data-z="c5"] circle { stroke: var(--z5); } .reveal .dmap .badge[data-z="c5"] .num { fill: var(--z5); }
+.reveal .mapwrap.focus .dmap .badge:not(.on) { opacity: .25; }
+.reveal .dmap .mark .mbg { fill: var(--map-sea); stroke: var(--ink); stroke-width: 1.2; opacity: .92; }
+.reveal .dmap .mark use { fill: var(--ink); }
+.reveal .dmap .mark text { font: 500 16px var(--body); }
+.reveal .mapwrap.focus .dmap .mark { opacity: .45; transition: opacity .35s; }
+.reveal .legend li i { color: var(--muted); }
+.reveal .legend ul:first-of-type li:nth-child(1) i { color: var(--z1); }
+.reveal .legend ul:first-of-type li:nth-child(2) i { color: var(--z2); }
+.reveal .legend ul:first-of-type li:nth-child(3) i { color: var(--z3); }
+.reveal .legend ul:first-of-type li:nth-child(4) i { color: var(--z4); }
+.reveal .legend ul:first-of-type li:nth-child(5) i { color: var(--z5); }
+.reveal .legend li span small { display: block; font-size: 14px; font-weight: 500; color: var(--muted); margin-top: 2px; }
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.print-pdf) .reveal section.present .dmap path.zone.centre { animation: landin 1s ease-out both; }
+  html:not(.print-pdf) .reveal section.present .dmap path.zone.z1 { animation-delay: .9s; }
+  html:not(.print-pdf) .reveal section.present .dmap path.zone.z2 { animation-delay: 1.1s; }
+  html:not(.print-pdf) .reveal section.present .dmap path.zone.z3 { animation-delay: 1.3s; }
+  html:not(.print-pdf) .reveal section.present .dmap path.zone.z4 { animation-delay: 1.5s; }
+  html:not(.print-pdf) .reveal section.present .dmap path.zone.z5 { animation-delay: 1.7s; }
+  html:not(.print-pdf) .reveal section.present .dmap .badge { animation: landin .6s ease-out both; animation-delay: 1.9s; }
+}
