@@ -120,10 +120,8 @@
 .reveal .bars .bar { display: grid; grid-template-columns: 190px 1fr 150px; align-items: center; gap: 28px; margin-bottom: 30px; }
 .reveal .bars .city { font-size: 26px; font-weight: 500; }
 .reveal .bars .track { position: relative; height: 44px; background: var(--panel); }
-.reveal .bars .fillbar { position: absolute; top: 0; bottom: 0; left: calc(var(--lo) * 10%); width: calc((var(--hi) - var(--lo)) * 10%); background: var(--muted); opacity: .55; }
-.reveal .bars .fillbar::before { content: ''; position: absolute; top: 0; bottom: 0; right: 100%; width: calc(var(--lo) / (var(--hi) - var(--lo)) * 100%); background: var(--muted); opacity: .35; }
-.reveal .bars .bar.hi .fillbar, .reveal .bars .bar.hi .fillbar::before { background: var(--accent); opacity: 1; }
-.reveal .bars .bar.hi .fillbar::before { opacity: .45; }
+.reveal .bars .fillbar { position: absolute; top: 0; bottom: 0; left: 0; width: calc(var(--hi) * 10%); --strong: var(--muted); background: linear-gradient(90deg, color-mix(in srgb, var(--strong) 35%, transparent) 0 calc(var(--lo) / var(--hi) * 100%), color-mix(in srgb, var(--strong) 75%, transparent) 0); transform-origin: left center; }
+.reveal .bars .bar.hi .fillbar { --strong: var(--accent); background: linear-gradient(90deg, color-mix(in srgb, var(--strong) 45%, transparent) 0 calc(var(--lo) / var(--hi) * 100%), var(--strong) 0); }
 .reveal .bars .val { font-size: 26px; font-weight: 600; }
 .reveal .bars .bar.hi .val, .reveal .bars .bar.hi .city { color: var(--accent); }
 .reveal .bars .scale { display: grid; grid-template-columns: repeat(5, 1fr) 0; margin-left: 218px; margin-right: 178px; font-size: 16px; color: var(--muted); }
@@ -171,3 +169,19 @@
 .reveal .pop b { white-space: nowrap; }
 .reveal[data-theme="empire"] .pop b { font-size: 30px; }
 .reveal[data-theme="empire"] .pop .goal b { font-size: 38px; }
+
+/* ===== Motion ===== */
+@keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes drift { from { transform: scale(1); } to { transform: scale(1.09); } }
+@keyframes drift-bg { from { transform: scale(1.0); } to { transform: scale(1.08) translateX(-1%); } }
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.print-pdf) .reveal section .a { opacity: 0; }
+  html:not(.print-pdf) .reveal section.present .a { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 120ms + 200ms); }
+  html:not(.print-pdf) .reveal section .bars .fillbar { transform: scaleX(0); }
+  html:not(.print-pdf) .reveal section.present .bars .fillbar { animation: grow 1.4s cubic-bezier(.3,.8,.2,1) both; animation-delay: calc(var(--i, 0) * 160ms + 600ms); }
+  html:not(.print-pdf) .reveal .split-img { overflow: hidden; position: relative; background: none !important; }
+  html:not(.print-pdf) .reveal .split-img .kb { position: absolute; inset: 0; background-size: cover; background-position: center; }
+  html:not(.print-pdf) .reveal section.present .split-img .kb { animation: drift 18s ease-out both; }
+  html:not(.print-pdf) .reveal .backgrounds .slide-background.present .slide-background-content { animation: drift-bg 20s ease-out both; }
+}

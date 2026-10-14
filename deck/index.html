@@ -122,10 +122,10 @@
       <p class="label">Объединённые Арабские Эмираты</p>
       <h2>Семь эмиратов,<br>одна сильная страна</h2>
       <ul class="facts">
-        <li><b>1971</b><span>год образования федерации, с тех пор политическая стабильность</span></li>
-        <li><b>3,6725</b><span>дирхам привязан к доллару США с 1997 года: курс не меняется</span></li>
+        <li><b data-static>1971</b><span>год образования федерации, с тех пор политическая стабильность</span></li>
+        <li><b data-static>3,6725</b><span>дирхам привязан к доллару США с 1997 года: курс не меняется</span></li>
         <li><b>200+</b><span>национальностей живут и работают в стране</span></li>
-        <li><b>№ 1</b><span>Абу Даби 10 лет подряд самый безопасный город мира по Numbeo</span></li>
+        <li><b data-static>№ 1</b><span>Абу Даби 10 лет подряд самый безопасный город мира по Numbeo</span></li>
       </ul>
       <p class="note">Абу Даби: столица. Дубай: деловой и туристический центр. Шарджа, Аджман, Умм Эль Кувейн, Рас Эль Хайма, Фуджейра.</p>
     </div>
@@ -181,7 +181,7 @@
       </div>
       <div class="yield-side">
         <p><b>7 до 9%</b> валовая доходность в JVC, Business Bay и Dubai South</p>
-        <p><b>Студии и 1BR</b> дают самую высокую доходность в мастер комьюнити с хорошей транспортной доступностью</p>
+        <p><b data-static>Студии и 1BR</b> дают самую высокую доходность в мастер комьюнити с хорошей транспортной доступностью</p>
         <p class="src">Средняя доходность жилой недвижимости, Khaleej Times, 2026</p>
       </div>
     </div>
@@ -250,9 +250,9 @@
         </div>
         <ul class="facts small">
           <li><b>5</b><span>городских центров: Deira и Bur Dubai, Downtown и Business Bay, Marina и JBR, Expo, Silicon Oasis</span></li>
-          <li><b>×2</b><span>зелёных и рекреационных зон</span></li>
+          <li><b data-static>×2</b><span>зелёных и рекреационных зон</span></li>
           <li><b>60%</b><span>территории эмирата под природные резерваты</span></li>
-          <li><b>D33</b><span>экономическая программа удвоения экономики Дубая к 2033</span></li>
+          <li><b data-static>D33</b><span>экономическая программа удвоения экономики Дубая к 2033</span></li>
         </ul>
       </div>
     </div>
@@ -346,6 +346,52 @@
   const toggle = () => setTheme(deck.dataset.theme === 'classic' ? 'empire' : 'classic');
   document.querySelector('.theme-btn').addEventListener('click', toggle);
 
+
+  // ===== Motion: staggered entrances, Ken Burns, count-up =====
+  const stagger = ['.label', 'h1', 'h2', '.sub', '.lead', '.cover-meta', '.contact', '.stats > div', '.zero > div', '.features > div', '.steps li', '.facts li', '.ticks li', '.company-text', '.logos', '.bars .bar', '.yield-side p', '.pop > div', '.plan-map', 'table.cmp tr', '.punch', '.note', '.src', '.sources li'];
+  document.querySelectorAll('.slides > section').forEach(sec => {
+    let i = 0;
+    sec.querySelectorAll(stagger.join(',')).forEach(el => {
+      if (el.closest('.a')) return;
+      el.classList.add('a'); el.style.setProperty('--i', i++);
+    });
+    sec.querySelectorAll('.bars .fillbar').forEach((f, k) => f.style.setProperty('--i', k));
+    sec.querySelectorAll('.split-img').forEach(img => {
+      const kb = document.createElement('div'); kb.className = 'kb';
+      kb.style.backgroundImage = img.style.backgroundImage; img.appendChild(kb);
+    });
+  });
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const countEls = document.querySelectorAll('.stats b:not([data-static]), .zero b, .facts b:not([data-static]), .pop b, .yield-side b:not([data-static])');
+  countEls.forEach(el => { el.dataset.final = el.textContent; });
+  const countUp = sec => {
+    if (reduce || document.documentElement.classList.contains('print-pdf')) return;
+    sec.querySelectorAll('[data-final]').forEach((el, k) => {
+      const txt = el.dataset.final;
+      const m = txt.match(/\d[\d\s]*(,\d+)?/);
+      if (!m) return;
+      const raw = m[0].trim();
+      const dec = raw.includes(',') ? raw.split(',')[1].length : 0;
+      const target = parseFloat(raw.replace(/\s/g, '').replace(',', '.'));
+      const grouped = /\d\s\d/.test(raw);
+      const fmt = v => {
+        let s = v.toFixed(dec).replace('.', ',');
+        if (grouped) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+        return txt.replace(m[0].trim(), s);
+      };
+      const dur = 1500, delay = 350 + k * 120; let start = null;
+      el.textContent = fmt(0);
+      const step = t => {
+        if (start === null) start = t + delay;
+        const p = Math.min(1, Math.max(0, (t - start) / dur));
+        const e = 1 - Math.pow(1 - p, 3);
+        el.textContent = p >= 1 ? txt : fmt(target * e);
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  };
+
   Reveal.initialize({
     width: 1920, height: 1080, margin: 0, minScale: 0.1, maxScale: 2,
     center: false, hash: true, transition: 'fade', transitionSpeed: 'fast',
@@ -353,6 +399,8 @@
     plugins: [RevealNotes],
     keyboard: { 84: toggle }
   });
+  Reveal.on('ready', e => countUp(e.currentSlide));
+  Reveal.on('slidechanged', e => countUp(e.currentSlide));
 </script>
 </body>
 </html>
