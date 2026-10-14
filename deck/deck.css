@@ -219,3 +219,62 @@
   html:not(.print-pdf) .reveal section.present .cmap .zone[data-z="4"] * { animation-delay: 1.05s; }
   html:not(.print-pdf) .reveal section.present .cmap .zone[data-z="5"] * { animation-delay: 1.3s; }
 }
+
+/* ===== Dubai city map ===== */
+.reveal[data-theme="classic"] .map-slide { --map-sea: #17110D; --map-land: #3A2E23; --map-road: #6E5B47; --map-hot: #F3CF8E; --map-coast: rgba(201,168,119,.35); }
+.reveal[data-theme="empire"] .map-slide { --map-sea: #050505; --map-land: #1F1F1F; --map-road: #4A4A4A; --map-hot: #ECB479; --map-coast: rgba(236,180,121,.3); }
+.reveal .map-slide .slide { padding-top: 88px; }
+.reveal .map-slide h2 { font-size: calc(64px * var(--d-scale)); }
+.reveal .mapwrap { position: absolute; left: 128px; right: 128px; top: 236px; height: 700px; overflow: hidden; }
+.reveal .dmap { width: 1664px; height: 700px; display: block; }
+.reveal .dmap .sea { fill: var(--map-sea); }
+.reveal .dmap .land { fill: var(--map-land); stroke: var(--map-coast); stroke-width: .8; }
+.reveal .dmap .water { fill: var(--map-sea); }
+.reveal .dmap .road { fill: none; stroke: var(--map-road); stroke-linecap: round; stroke-linejoin: round; }
+.reveal .dmap .road.major { stroke-width: 1.8; }
+.reveal .dmap .road.minor { stroke-width: .8; opacity: .6; }
+.reveal .dmap .place { font: italic 500 20px var(--display); fill: var(--muted); text-anchor: middle; opacity: .75; }
+.reveal[data-theme="empire"] .dmap .place { font: 500 13px var(--body); letter-spacing: .08em; }
+.reveal .dmap .sea-label { font: 600 13px var(--body); letter-spacing: .32em; text-transform: uppercase; fill: var(--muted); text-anchor: middle; opacity: .55; }
+.reveal .dmap .credit { font: 11px var(--body); fill: var(--muted); text-anchor: end; opacity: .5; }
+.reveal .dmap .mark circle { fill: var(--ink); }
+.reveal .dmap .mark text { font: 500 18px var(--body); fill: var(--ink); opacity: .85; }
+.reveal .dmap .zone { cursor: pointer; transition: opacity .35s; }
+.reveal .dmap .zone.centre path { fill: var(--accent); fill-opacity: .16; stroke: var(--accent); stroke-width: 1.8; transition: fill-opacity .35s, stroke-width .35s; }
+.reveal .dmap .zone.centre circle { fill: var(--map-sea); stroke: var(--accent); stroke-width: 1.5; transition: fill .35s; }
+.reveal .dmap .zone.centre .num { font: 700 14px var(--body); fill: var(--accent); text-anchor: middle; transition: fill .35s; }
+.reveal .dmap .zone.hot path { fill: var(--map-hot); fill-opacity: .55; stroke: var(--map-hot); stroke-width: 2.2; transition: fill-opacity .35s; }
+.reveal .dmap .zone.hot .dot { fill: var(--map-hot); stroke: var(--map-sea); stroke-width: 2; }
+.reveal .dmap .zone.hot .ping { fill: none; stroke: var(--map-hot); stroke-width: 2; transform-box: fill-box; transform-origin: center; }
+.reveal .dmap .hotlabel { font: 700 22px var(--body); fill: var(--map-hot); text-anchor: start; paint-order: stroke; stroke: var(--map-sea); stroke-width: 5px; stroke-linejoin: round; }
+.reveal .dmap .mark text, .reveal .dmap .place { paint-order: stroke; stroke: var(--map-sea); stroke-width: 4px; stroke-linejoin: round; }
+.reveal .mapwrap.focus .dmap .zone:not(.on) { opacity: .18; }
+.reveal .dmap .zone.centre.on path { fill-opacity: .45; stroke-width: 3; }
+.reveal .dmap .zone.centre.on circle { fill: var(--accent); }
+.reveal .dmap .zone.centre.on .num { fill: var(--map-sea); }
+.reveal .dmap .zone.hot.on path { fill-opacity: .85; }
+.reveal .legend { position: absolute; right: 24px; bottom: 24px; width: 430px; padding: 26px 30px 24px; background: color-mix(in srgb, var(--map-sea) 88%, transparent); border: 1px solid var(--line); backdrop-filter: blur(6px); }
+.reveal .legend .lg-title { font-size: 14px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+.reveal .legend .lg-title.hot { color: var(--map-hot); margin-top: 18px; }
+.reveal .legend li { display: flex; align-items: center; gap: 14px; font-size: 21px; padding: 6px 0; cursor: pointer; transition: opacity .3s, color .3s; }
+.reveal .legend li i { font-style: normal; font-weight: 700; font-size: 15px; color: var(--accent); width: 26px; }
+.reveal .legend li .hotdot { width: 14px; height: 14px; border-radius: 50%; background: var(--map-hot); margin: 0 6px 0 4px; }
+.reveal .legend li[data-z="di"], .reveal .legend li[data-z="dlrc"] { font-weight: 600; color: var(--map-hot); }
+.reveal .mapwrap.focus .legend li:not(.on) { opacity: .35; }
+.reveal .legend .lg-desc { font-size: 17px; line-height: 1.45; color: var(--muted); margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); height: 78px; overflow: hidden; }
+@keyframes ping { 0% { transform: scale(1); opacity: .9; } 100% { transform: scale(3.2); opacity: 0; } }
+@keyframes landin { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.print-pdf) .reveal section.present .dmap .land { animation: landin 1.2s ease-out both; }
+  html:not(.print-pdf) .reveal section.present .dmap .road { stroke-dasharray: 1; animation: draw 2.4s ease-out both; animation-delay: .4s; }
+  html:not(.print-pdf) .reveal section.present .dmap .zone.centre path { stroke-dasharray: 1; animation: draw 1.4s cubic-bezier(.4,.1,.2,1) both; }
+  html:not(.print-pdf) .reveal section.present .dmap .zone circle:not(.ping):not(.dot), html:not(.print-pdf) .reveal section.present .dmap .zone .num { transform-box: fill-box; transform-origin: center; animation: pop .6s cubic-bezier(.2,.8,.3,1.3) both; }
+  html:not(.print-pdf) .reveal section.present .dmap .zone[data-z="c1"] * { animation-delay: 1.0s; }
+  html:not(.print-pdf) .reveal section.present .dmap .zone[data-z="c2"] * { animation-delay: 1.2s; }
+  html:not(.print-pdf) .reveal section.present .dmap .zone[data-z="c3"] * { animation-delay: 1.4s; }
+  html:not(.print-pdf) .reveal section.present .dmap .zone[data-z="c4"] * { animation-delay: 1.6s; }
+  html:not(.print-pdf) .reveal section.present .dmap .zone[data-z="c5"] * { animation-delay: 1.8s; }
+  html:not(.print-pdf) .reveal section.present .dmap .zone.hot > :not(.ping) { animation: landin .9s ease-out 2.4s both; }
+  html:not(.print-pdf) .reveal section.present .dmap .zone.hot .ping { animation: ping 2.2s ease-out 3s infinite; }
+  html:not(.print-pdf) .reveal section.present .dmap .mark, html:not(.print-pdf) .reveal section.present .dmap .place { animation: landin .8s ease-out 1.2s both; }
+}
