@@ -476,3 +476,50 @@
 .reveal .isl-list li.here { background: var(--panel); padding-left: 16px; margin-left: -16px; }
 .reveal .isl-list li.here i { color: var(--accent); }
 .reveal .isl-list li.here span { color: var(--ink); }
+
+/* islands map */
+.reveal .imap .badge .num.big { font: 700 22px var(--body); }
+.reveal .imap .badge circle { stroke-width: 2.4; }
+.reveal .imap .badge[data-z="iA"] circle { stroke: var(--z1); } .reveal .imap .badge[data-z="iA"] .num { fill: var(--z1); }
+.reveal .imap .badge[data-z="iB"] circle { stroke: var(--z3); } .reveal .imap .badge[data-z="iB"] .num { fill: var(--z3); }
+.reveal .imap .badge[data-z="iC"] circle { stroke: var(--z4); } .reveal .imap .badge[data-z="iC"] .num { fill: var(--z4); }
+.reveal .imap .badge[data-z="iD"] circle { stroke: var(--z2); } .reveal .imap .badge[data-z="iD"] .num { fill: var(--z2); }
+.reveal .imap .badge[data-z="iE"] circle { stroke: var(--z5); } .reveal .imap .badge[data-z="iE"] .num { fill: var(--z5); }
+.reveal .imap path.zone.centre { fill-opacity: .55; stroke-width: 1.6; }
+.reveal .imap path.zone.centre.on { fill-opacity: .85; stroke-width: 3; }
+.reveal .imap .imark { transition: opacity .35s; }
+.reveal .imap .imark circle { fill: var(--map-sea); stroke: var(--ink); stroke-width: 1.2; }
+.reveal .imap .imark use { fill: var(--ink); }
+.reveal .imap .imark text { font: 600 14px var(--body); fill: var(--ink); text-anchor: middle; paint-order: stroke; stroke: var(--map-sea); stroke-width: 4px; stroke-linejoin: round; }
+.reveal .mapwrap.focus .imap .imark:not(.on) { opacity: .18; }
+.reveal .imap .gpin .dot { fill: var(--map-hot); stroke: var(--map-sea); stroke-width: 2.5; }
+.reveal .imap .gpin .ping { fill: none; stroke: var(--map-hot); stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: ping 2.2s ease-out infinite; }
+.reveal .imap .gpin text { font: 700 19px var(--body); fill: var(--map-hot); paint-order: stroke; stroke: var(--map-sea); stroke-width: 5px; stroke-linejoin: round; }
+.reveal .isl-slide .legend li i { font-weight: 700; font-size: 20px; width: 26px; }
+.reveal .isl-slide .legend ul li:nth-child(1) i { color: var(--z1); }
+.reveal .isl-slide .legend ul li:nth-child(2) i { color: var(--z3); }
+.reveal .isl-slide .legend ul li:nth-child(3) i { color: var(--z4); }
+.reveal .isl-slide .legend ul li:nth-child(4) i { color: var(--z2); }
+.reveal .isl-slide .legend ul li:nth-child(5) i { color: var(--z5); }
+.reveal .isl-slide .legend li.here { color: var(--map-hot); font-weight: 600; }
+.reveal .isl-slide .legend .lg-desc { height: 110px; }
+
+.reveal .isl-slide .mapwrap { top: 196px; height: 770px; }
+.reveal .isl-slide .dmap { height: 770px; }
+.reveal .isl-slide h2 { font-size: calc(56px * var(--d-scale)); }
+
+/* monthly rent picture */
+.reveal .roi .month { margin-top: 26px; }
+.reveal .roi .mb { display: grid; grid-template-columns: 190px 1fr 110px; align-items: center; gap: 16px; margin-bottom: 12px; }
+.reveal .roi .mb span { font-size: 20px; }
+.reveal .roi .mb i { display: block; height: 30px; background: var(--panel); }
+.reveal .roi .mb em { display: block; height: 100%; background: var(--muted); transition: width .4s; }
+.reveal .roi .mb.rent em { background: var(--accent); }
+.reveal .roi .mb.sc em { opacity: .6; }
+.reveal .roi .mb b { font-size: 22px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+.reveal .roi .cover { font-size: 22px; margin-top: 16px; }
+.reveal .roi .cover b { color: var(--accent); font-size: 28px; }
+.reveal .roi .m-rent .src { margin-top: 10px; font-size: 15px; }
+.reveal .roi .chips button { font-size: 19px; padding: 10px 18px; }
+.reveal .roi .big-in { font-size: calc(88px * var(--d-scale)); margin-bottom: 12px; }
+.reveal .roi .tabs { margin-bottom: 26px; }
