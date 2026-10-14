@@ -6,7 +6,7 @@
 <title>Инвестиции в Дубай | Empire City Real Estate</title>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../assets/vendor/reveal.css">
-<link rel="stylesheet" href="deck.css?v=202610150420">
+<link rel="stylesheet" href="deck.css?v=202610150440">
 </head>
 <body>
 <div class="reveal" data-theme="classic">
@@ -647,13 +647,7 @@
           <output class="big-in o-rent">18 000</output>
           <input id="r-rent" type="range" min="6000" max="30000" step="100" value="18000">
           <div class="chips" data-for="rent"><button type="button" data-m="14000">14 000</button><button type="button" data-m="16000">16 000</button><button type="button" data-m="18000" class="on">18 000 · Creek Harbour</button><button type="button" data-m="20000">20 000</button></div>
-          <div class="month">
-            <div class="mb rent"><span>Аренда</span><i><em style="width:100%"></em></i><b class="v-rent">18 000</b></div>
-            <div class="mb mort"><span>Ипотека*</span><i><em></em></i><b class="v-mort">9 750</b></div>
-            <div class="mb sc"><span>Сервисный сбор</span><i><em></em></i><b class="v-sc">1 593</b></div>
-            <p class="cover">Аренда покрывает ипотеку и сервисный сбор в <b class="v-x">1,6</b> раза</p>
-            <p class="src">Creek Harbour: 1BR в краткосрочной аренде сегодня приносит 18–20 тыс. AED в месяц с учётом простоев. *Если 65% при сдаче оформить в ипотеку: 4%, 25 лет</p>
-          </div>
+          <p class="src">Creek Harbour: 1BR в краткосрочной аренде сегодня приносит 18–20 тыс. AED в месяц с учётом простоев. Как аренда покрывает ипотеку: на следующем слайде</p>
         </div>
         <div class="mode m-resale" hidden>
           <label for="r-sp">Цена продажи, AED</label>
@@ -673,6 +667,40 @@
     </div>
   </div>
   <aside class="notes">Расчёт по методике компании. Аренда: (аренда − сервисный сбор) / (цена + DLD 4% + админ сбор). Перепродажа: (цена продажи − цена покупки − DLD − сбор − NOC − комиссия 2%) / (оплаченные взносы + DLD + сбор). NOC 4 000 AED: уточнить у MR8. Цена продажи это сценарий, не прогноз застройщика.</aside>
+</section>
+
+<!-- P9b ИПОТЕКА И АРЕНДА -->
+<section class="light mort-slide">
+  <div class="slide">
+    <p class="label">Ипотека после получения ключей</p>
+    <h2>Аренда платит ипотеку за вас</h2>
+    <div class="mg" data-ep="2842000" data-sc="19113" data-dld="0.04" data-fee="5000">
+      <div class="mg-steps">
+        <div class="st"><i>1</i><div><b>До ключей, до Q1 2028</b><span>Вы платите застройщику 35% в рассрочку: <em class="s-35">994 700</em> AED плюс DLD 4% и админ сбор</span></div></div>
+        <div class="st"><i>2</i><div><b>При получении ключей</b><span>Остаток 65% (<em class="s-65">1 847 300</em> AED) закрывает банк. <em class="s-topup-txt"></em></span></div></div>
+        <div class="st"><i>3</i><div><b>После ключей</b><span>Квартира сдаётся, аренда каждый месяц гасит ипотеку и сервисный сбор, остаток идёт вам</span></div></div>
+        <div class="mg-ctl">
+          <div><label>Покупатель</label><div class="chips" data-k="ltv"><button type="button" data-v="0.6" class="on">Нерезидент, до 60%</button><button type="button" data-v="0.65">Резидент ОАЭ, 65%</button></div></div>
+          <div><label>Ставка</label><div class="chips" data-k="rate"><button type="button" data-v="0.04">4%</button><button type="button" data-v="0.045" class="on">4,5%</button><button type="button" data-v="0.05">5%</button></div></div>
+          <div><label>Срок</label><div class="chips" data-k="term"><button type="button" data-v="20">20 лет</button><button type="button" data-v="25" class="on">25 лет</button></div></div>
+        </div>
+      </div>
+      <div class="mg-out">
+        <label for="m-rent">Аренда в месяц, AED</label>
+        <div class="mg-rent"><output class="o-mrent">18 000</output><input id="m-rent" type="range" min="6000" max="30000" step="100" value="18000"></div>
+        <div class="mb rent"><span>Аренда</span><i><em></em></i><b class="v-rent"></b></div>
+        <div class="mb mort"><span>Ипотека</span><i><em></em></i><b class="v-mort"></b></div>
+        <div class="mb sc"><span>Сервисный сбор</span><i><em></em></i><b class="v-sc"></b></div>
+        <div class="mg-sum">
+          <div><span>Остаётся вам в месяц</span><b class="v-left"></b></div>
+          <div><span>Аренда покрывает платежи</span><b class="v-x"></b></div>
+          <div><span>Ваши деньги до ключей и при сдаче</span><b class="v-own"></b></div>
+        </div>
+        <p class="src">Ипотека на <em class="s-ltv">60%</em> стоимости: <em class="s-loan"></em> AED. Ставки банков ОАЭ в 2026: около 4–5% годовых, срок до 25 лет. Нерезидентам банки обычно дают до 60% стоимости готового жилья, резидентам больше. Точные условия после одобрения банка</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">Логика для клиента: ипотека берётся только на часть цены и растягивается на 25 лет, поэтому месячный платёж примерно вдвое меньше месячной аренды. Нерезиденту банк даст около 60%, значит при сдаче нужно доплатить 5% своими. Наш ипотечный отдел ведёт клиента под ключ. Расходы банка: оформление 0,5–1% от кредита, регистрация ипотеки 0,25% + 290 AED, оценка 2 500–5 000 AED.</aside>
 </section>
 
 <!-- P10 СЛЕДУЮЩИЙ ШАГ -->
@@ -838,22 +866,13 @@
   document.querySelectorAll('.roi').forEach(c => {
     const d = c.dataset, ep = +d.ep, dld = ep * +d.dld, fee = +d.fee, sc = +d.sc, noc = +d.noc, comR = +d.com;
     const rent = c.querySelector('#r-rent'), sp = c.querySelector('#r-sp');
-    const loan = ep * 0.65, rr = 0.04 / 12, mort = loan * rr / (1 - Math.pow(1 + rr, -300));
     let mode = 'rent', paid = 0.35;
     const row = (k, v, cls) => '<div class="' + (cls || '') + '"><dt>' + k + '</dt><dd>' + v + '</dd></div>';
     const upd = () => {
       let rows = '', roi;
       if (mode === 'rent') {
-        const m = +rent.value, r = m * 12, profit = r - sc, inv = ep + dld + fee, scm = sc / 12;
+        const m = +rent.value, r = m * 12, profit = r - sc, inv = ep + dld + fee;
         c.querySelector('.o-rent').textContent = fmt(m);
-        const mx = Math.max(m, mort + scm);
-        c.querySelector('.mb.rent em').style.width = (m / mx * 100) + '%';
-        c.querySelector('.mb.mort em').style.width = (mort / mx * 100) + '%';
-        c.querySelector('.mb.sc em').style.width = (scm / mx * 100) + '%';
-        c.querySelector('.v-rent').textContent = fmt(m);
-        c.querySelector('.v-mort').textContent = fmt(mort);
-        c.querySelector('.v-sc').textContent = fmt(scm);
-        c.querySelector('.v-x').textContent = (Math.round(m / (mort + scm) * 10) / 10).toFixed(1).replace('.', ',');
         rows = row('Аренда в год', fmt(r)) + row('Сервисный сбор', fmt(-sc)) + row('Прибыль', fmt(profit), 'sum')
           + row('Цена покупки', fmt(ep)) + row('DLD 4%', fmt(dld)) + row('Админ сбор', fmt(fee)) + row('Вложения', fmt(inv), 'sum');
         roi = profit / inv * 100;
@@ -881,6 +900,38 @@
     c.querySelectorAll('[data-for="sp"] button').forEach(b => b.addEventListener('click', () => { sp.value = Math.round(ep * (1 + b.dataset.g / 100)); upd(); }));
     c.querySelectorAll('[data-for="paid"] button').forEach(b => b.addEventListener('click', () => { paid = +b.dataset.p; upd(); }));
     upd();
+  });
+  // mortgage vs rent
+  document.querySelectorAll('.mg').forEach(c => {
+    const ep = +c.dataset.ep, sc = +c.dataset.sc, dld = ep * +c.dataset.dld, fee = +c.dataset.fee;
+    const st = { ltv: 0.6, rate: 0.045, term: 25 };
+    const rent = c.querySelector('#m-rent');
+    const upd = () => {
+      const m = +rent.value, loan = ep * st.ltv, r = st.rate / 12, n = st.term * 12;
+      const pay = loan * r / (1 - Math.pow(1 + r, -n)), scm = sc / 12, topup = ep * (0.65 - st.ltv);
+      const mx = Math.max(m, pay + scm);
+      c.querySelector('.mb.rent em').style.width = (m / mx * 100) + '%';
+      c.querySelector('.mb.mort em').style.width = (pay / mx * 100) + '%';
+      c.querySelector('.mb.sc em').style.width = (scm / mx * 100) + '%';
+      c.querySelector('.o-mrent').textContent = fmt(m);
+      c.querySelector('.v-rent').textContent = fmt(m);
+      c.querySelector('.v-mort').textContent = fmt(-pay);
+      c.querySelector('.v-sc').textContent = fmt(-scm);
+      c.querySelector('.v-left').textContent = fmt(m - pay - scm);
+      c.querySelector('.v-x').textContent = 'в ' + (Math.round(m / (pay + scm) * 10) / 10).toFixed(1).replace('.', ',') + ' раза';
+      c.querySelector('.v-own').textContent = fmt(ep * 0.35 + topup + dld + fee);
+      c.querySelector('.s-ltv').textContent = Math.round(st.ltv * 100) + '%';
+      c.querySelector('.s-loan').textContent = fmt(loan);
+      c.querySelector('.s-topup-txt').textContent = topup > 0
+        ? 'Банк даёт ' + Math.round(st.ltv * 100) + '%, ещё ' + Math.round((0.65 - st.ltv) * 100) + '% (' + fmt(topup) + ' AED) вы доплачиваете сами'
+        : 'Весь остаток оформляется в ипотеку';
+      c.querySelector('.v-left').parentElement.classList.toggle('neg', m - pay - scm < 0);
+    };
+    c.querySelectorAll('.chips[data-k] button').forEach(b => b.addEventListener('click', () => {
+      const k = b.parentElement.dataset.k; st[k] = +b.dataset.v;
+      b.parentElement.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); upd();
+    }));
+    rent.addEventListener('input', upd); upd();
   });
   // pause video when leaving its slide
   Reveal.on('slidechanged', e => { document.querySelectorAll('video').forEach(v => { if (!e.currentSlide.contains(v)) v.pause(); }); });
