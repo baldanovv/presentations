@@ -687,3 +687,15 @@ html.portrait .reveal .life-cols { gap: 32px; margin-top: 28px; }
 html.portrait .reveal .life-cols .ticks li { font-size: 27px; margin-bottom: 6px; }
 html.portrait .reveal .dmap:not(.imap) .place { display: none; }
 html.portrait .reveal .dmap:not(.imap) .mark:nth-child(5) text { display: none; }
+
+/* big, easy range sliders (phones especially) */
+.reveal input[type=range] { -webkit-appearance: none; appearance: none; background: transparent; height: 48px; touch-action: pan-y; }
+.reveal input[type=range]::-webkit-slider-runnable-track { height: 8px; background: var(--line); border-radius: 4px; }
+.reveal input[type=range]::-moz-range-track { height: 8px; background: var(--line); border-radius: 4px; }
+.reveal input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 40px; height: 40px; border-radius: 50%; background: var(--accent); border: 4px solid var(--bg); box-shadow: 0 0 0 2px var(--accent); margin-top: -16px; cursor: grab; }
+.reveal input[type=range]::-moz-range-thumb { width: 34px; height: 34px; border-radius: 50%; background: var(--accent); border: 4px solid var(--bg); box-shadow: 0 0 0 2px var(--accent); cursor: grab; }
+html.portrait .reveal input[type=range] { height: 160px; margin: 8px 0; }
+html.portrait .reveal input[type=range]::-webkit-slider-runnable-track { height: 22px; border-radius: 11px; }
+html.portrait .reveal input[type=range]::-webkit-slider-thumb { width: 130px; height: 130px; margin-top: -54px; border-width: 10px; box-shadow: 0 0 0 5px var(--accent); }
+html.portrait .reveal input[type=range]::-moz-range-thumb { width: 110px; height: 110px; border-width: 10px; }
+html.portrait .reveal .mg-rent input[type=range] { width: 100%; }
