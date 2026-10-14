@@ -2,11 +2,11 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Инвестиции в Дубай | Empire City Real Estate</title>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../assets/vendor/reveal.css">
-<link rel="stylesheet" href="deck.css?v=202610150440">
+<link rel="stylesheet" href="deck.css?v=202610150510">
 </head>
 <body>
 <div class="reveal" data-theme="classic">
@@ -824,8 +824,24 @@
     });
   };
 
+  // phones and portrait screens: vertical layout, scroll through slides
+  const portrait = window.matchMedia('(orientation: portrait) and (max-width: 1100px)').matches || new URLSearchParams(location.search).has('portrait');
+  if (portrait) {
+    document.documentElement.classList.add('portrait');
+    // aerial slide: show the full image as a block so the labels stay in place
+    document.querySelectorAll('.area-slide').forEach(sec => {
+      const bg = sec.getAttribute('data-background-image'); sec.removeAttribute('data-background-image');
+      const a = sec.querySelector('.aerial'); a.style.backgroundImage = 'url(' + bg + ')';
+      a.querySelectorAll('[style*="left"]').forEach(el => { const x = parseFloat(el.style.left); el.style.left = ((x / 100 * 1920 + 73.5) / 2067 * 100).toFixed(1) + '%'; });
+    });
+    setTheme(deck.dataset.theme);
+    // maps: crop to the useful part, legend goes below
+    document.querySelectorAll('.dmap:not(.imap)').forEach(m => m.setAttribute('viewBox', '0 0 1220 700'));
+    document.querySelectorAll('.imap').forEach(m => m.setAttribute('viewBox', '250 0 820 770'));
+  }
   Reveal.initialize({
-    width: 1920, height: 1080, margin: 0, minScale: 0.1, maxScale: 2,
+    width: portrait ? 1080 : 1920, height: portrait ? 1920 : 1080, margin: 0, minScale: 0.1, maxScale: 2,
+    view: portrait ? 'scroll' : null, scrollActivationWidth: null, scrollProgress: 'auto', scrollLayout: 'full',
     center: false, hash: true, transition: 'fade', transitionSpeed: 'fast',
     backgroundTransition: 'fade', controls: true, progress: true,
     plugins: [RevealNotes],

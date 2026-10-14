@@ -554,3 +554,114 @@
 .reveal .mg-sum div:first-child b { color: var(--accent); font-family: var(--num-font); font-weight: var(--num-weight); font-size: calc(52px * var(--d-scale)); }
 .reveal .mg-sum div.neg b { color: #B4533A; }
 .reveal .mg-out .src { font-size: 15px; margin-top: 12px; line-height: 1.45; }
+
+/* ===== Portrait / phone layout ===== */
+html.portrait .reveal .slides > section { width: 1080px; height: 1920px; }
+html.portrait .reveal .slide { padding: 120px 72px 140px; }
+html.portrait .reveal h1, html.portrait .reveal .h1 { font-size: calc(92px * var(--d-scale)); }
+html.portrait .reveal h2 { font-size: calc(66px * var(--d-scale)); }
+html.portrait .reveal p { font-size: 30px; }
+html.portrait .reveal .label { font-size: 20px; }
+html.portrait .reveal .sub { font-size: 30px; }
+html.portrait .reveal .foot { left: 72px; right: 72px; bottom: 60px; }
+html.portrait .reveal .punch { position: static; margin-top: 56px; font-size: calc(44px * var(--d-scale)); }
+html.portrait .reveal .stats.four { grid-template-columns: 1fr 1fr; gap: 48px 40px; }
+html.portrait .reveal .stats span { font-size: 26px; }
+html.portrait .reveal .grid3, html.portrait .reveal .life-cols, html.portrait .reveal .dev-row, html.portrait .reveal .company-row,
+html.portrait .reveal .yield, html.portrait .reveal .unit, html.portrait .reveal .pay, html.portrait .reveal .roi, html.portrait .reveal .mg,
+html.portrait .reveal .calc { grid-template-columns: 1fr; gap: 48px; }
+html.portrait .reveal .steps { grid-template-columns: 1fr 1fr; }
+html.portrait .reveal .ticks li, html.portrait .reveal .split-text .ticks li { font-size: 28px; }
+html.portrait .reveal .features p, html.portrait .reveal .steps span, html.portrait .reveal .facts span { font-size: 26px; }
+/* covers */
+html.portrait .reveal .cover-logo, html.portrait .reveal .project-logo { left: 72px; top: 120px; }
+html.portrait .reveal .cover-body { left: 72px; right: 72px; bottom: 360px; }
+html.portrait .reveal .cover-meta { left: 72px; bottom: 220px; font-size: 28px; }
+html.portrait .reveal .pstats { flex-wrap: wrap; gap: 40px 64px; }
+html.portrait .reveal section.cover .cover-shade { background: linear-gradient(0deg, rgba(20,14,10,.94) 0%, rgba(20,14,10,.75) 50%, rgba(20,14,10,.25) 100%); }
+/* split slides: image on top, text below */
+html.portrait .reveal section.split .slide, html.portrait .reveal section.split.reverse .slide { grid-template-columns: 1fr; grid-template-rows: 640px 1fr; }
+html.portrait .reveal section.split .split-img { grid-row: 1; }
+html.portrait .reveal section.split .split-text, html.portrait .reveal section.split.reverse .split-text { grid-row: 2; padding: 64px 72px 140px; }
+html.portrait .reveal section.split .foot, html.portrait .reveal section.split.reverse .foot { left: 72px; right: 72px; }
+html.portrait .reveal .zero b { font-size: calc(84px * var(--d-scale)); }
+/* company */
+html.portrait .reveal .logos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+html.portrait .reveal .logos img.featured { grid-column: span 4; max-width: 300px; }
+html.portrait .reveal .company-text p { font-size: 28px; }
+/* tables */
+html.portrait .reveal table.cmp { font-size: 22px; }
+html.portrait .reveal table.cmp tbody th { width: 200px; }
+html.portrait .reveal table.cmp th, html.portrait .reveal table.cmp td { padding: 18px 10px; }
+html.portrait .reveal section.sources ul { columns: 1; }
+/* maps */
+html.portrait .reveal .mapwrap, html.portrait .reveal .isl-slide .mapwrap { position: static; height: auto; margin-top: 40px; overflow: visible; }
+html.portrait .reveal .dmap, html.portrait .reveal .isl-slide .dmap { width: 100%; height: auto; }
+html.portrait .reveal .legend { position: static; width: auto; margin-top: 24px; }
+html.portrait .reveal .legend li { font-size: 28px; }
+html.portrait .reveal .legend .lg-desc { font-size: 24px; height: auto; min-height: 100px; }
+html.portrait .reveal .isl-slide .mapwrap { overflow: hidden; }
+/* area slide */
+html.portrait .reveal .area-slide .slide { padding: 0; }
+html.portrait .reveal .area-slide .aerial { position: relative; inset: auto; width: 100%; aspect-ratio: 2400 / 1254; background-size: cover; background-position: center; }
+html.portrait .reveal .area-panel { position: static; width: auto; padding: 64px 72px 140px; background: none; backdrop-filter: none; }
+html.portrait .reveal .area-slide .foot { left: 72px; right: 72px; width: auto; }
+html.portrait .reveal .aerial .tag { font-size: 18px; }
+html.portrait .reveal .chain { flex-direction: column; gap: 8px; }
+html.portrait .reveal .chain li + li { padding-left: 0; }
+html.portrait .reveal .chain li + li::before { display: none; }
+/* developer */
+html.portrait .reveal .dev-head { flex-direction: column; align-items: flex-start; gap: 24px; }
+html.portrait .reveal .ports li { grid-template-columns: 180px 1fr; }
+/* galleries */
+html.portrait .reveal .gallery.g3, html.portrait .reveal .gallery.g4 { grid-template-columns: 1fr; height: auto; }
+html.portrait .reveal .gallery figure { height: 400px; }
+html.portrait .reveal .gallery.g3 figure { height: 300px; }
+html.portrait .reveal .brands { grid-template-columns: 1fr 1fr; }
+/* video */
+html.portrait .reveal .video-slide .slide { align-items: center; }
+/* unit */
+html.portrait .reveal .unit .plan { height: 780px; }
+html.portrait .reveal .specs dd { font-size: 34px; }
+html.portrait .reveal .unit-photo { min-height: 420px; }
+/* payment */
+html.portrait .reveal .pay-head { grid-template-columns: 1fr 1fr; gap: 32px; }
+html.portrait .reveal .pay-head div:first-child { grid-column: span 2; }
+html.portrait .reveal table.paytbl { font-size: 26px; }
+/* roi + mortgage */
+html.portrait .reveal .roi .chips, html.portrait .reveal .mg .chips { flex-wrap: wrap; }
+html.portrait .reveal .rows div { font-size: 24px; }
+html.portrait .reveal .mg-steps span { font-size: 24px; }
+html.portrait .reveal .mg .mb { grid-template-columns: 200px 1fr 130px; }
+html.portrait .reveal .mg-rent { grid-template-columns: 1fr; gap: 12px; }
+/* islands list (static) */
+html.portrait .reveal .isl { grid-template-columns: 1fr; }
+/* theme button smaller on phone */
+html.portrait .theme-btn { display: none; }
+
+/* portrait: larger text for phones */
+html.portrait .reveal p { font-size: 34px; }
+html.portrait .reveal .label { font-size: 22px; }
+html.portrait .reveal .sub { font-size: 32px; }
+html.portrait .reveal .stats span, html.portrait .reveal .facts span, html.portrait .reveal .features p, html.portrait .reveal .company-text p { font-size: 30px; }
+html.portrait .reveal .steps b, html.portrait .reveal .features h4, html.portrait .reveal h4 { font-size: 34px; }
+html.portrait .reveal .steps span, html.portrait .reveal .ports span, html.portrait .reveal .mg-steps span, html.portrait .reveal .isl-list span { font-size: 28px; }
+html.portrait .reveal .ticks li, html.portrait .reveal .split-text .ticks li, html.portrait .reveal .life-cols .ticks li, html.portrait .reveal .pay-side .ticks li, html.portrait .reveal .dev-awards .ticks li { font-size: 30px; }
+html.portrait .reveal table.cmp { font-size: 24px; }
+html.portrait .reveal table.paytbl { font-size: 30px; }
+html.portrait .reveal .rows div { font-size: 28px; }
+html.portrait .reveal .legend li { font-size: 32px; }
+html.portrait .reveal .legend .lg-title { font-size: 20px; }
+html.portrait .reveal .legend .lg-desc { font-size: 28px; }
+html.portrait .reveal .brands span { font-size: 24px; } html.portrait .reveal .brands b { font-size: 30px; }
+html.portrait .reveal .specs dt { font-size: 20px; }
+html.portrait .reveal section.sources li { font-size: 28px; }
+html.portrait .reveal .src { font-size: 22px; }
+html.portrait .reveal .mg .mb span, html.portrait .reveal .mg .mb b { font-size: 24px; }
+html.portrait .reveal .mg-sum span { font-size: 26px; }
+html.portrait .reveal .mg .chips button, html.portrait .reveal .roi .chips button, html.portrait .reveal .tabs button { font-size: 24px; padding: 12px 20px; }
+html.portrait .reveal .yield-side p, html.portrait .reveal .bars .city, html.portrait .reveal .bars .val { font-size: 28px; }
+html.portrait .reveal .area-panel .facts span { font-size: 28px; }
+html.portrait .reveal .gallery figcaption { font-size: 24px; }
+html.portrait .reveal .cta-steps li { font-size: 32px; }
+html.portrait .reveal .dmap { display: block; }
