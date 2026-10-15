@@ -744,3 +744,11 @@ html.portrait .reveal .objs { grid-template-columns: 1fr; gap: 18px; }
 html.portrait .reveal .obq { font-size: 34px; } html.portrait .reveal .oba { font-size: 28px; }
 .reveal .vside text { font-size: 26px; } .reveal .v-zone { font-size: 22px; } .reveal .v201 text { font-size: 26px; }
 .reveal .v-bld { stroke-width: 4; }
+.reveal .big-pop { grid-template-columns: repeat(4, 1fr); max-width: 1500px; }
+.reveal .pop .goal.day b { color: var(--ink); }
+html.portrait .reveal .big-pop { grid-template-columns: 1fr 1fr; row-gap: 32px; }
+.reveal[data-theme="empire"] .big-pop b, .reveal[data-theme="empire"] .big-pop .goal b { font-size: 64px; line-height: 1.1; }
+.reveal .big-pop { margin-top: 56px; gap: 32px; }
+.reveal .big-pop span { display: block; margin-top: 10px; }
+.reveal .big-pop > div { padding-bottom: 18px; }
+.reveal .big-pop + .stats { margin-top: 72px; }
