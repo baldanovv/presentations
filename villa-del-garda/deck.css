@@ -699,3 +699,48 @@ html.portrait .reveal input[type=range]::-webkit-slider-runnable-track { height:
 html.portrait .reveal input[type=range]::-webkit-slider-thumb { width: 130px; height: 130px; margin-top: -54px; border-width: 10px; box-shadow: 0 0 0 5px var(--accent); }
 html.portrait .reveal input[type=range]::-moz-range-thumb { width: 110px; height: 110px; border-width: 10px; }
 html.portrait .reveal .mg-rent input[type=range] { width: 100%; }
+
+/* market row */
+.reveal .mk-row { position: absolute; left: 128px; right: 128px; bottom: 150px; display: grid; grid-template-columns: auto auto 1fr; gap: 64px; align-items: end; padding-top: 26px; border-top: 1px solid rgba(242,235,220,.25); }
+.reveal .mk-row b { display: block; font-family: var(--num-font); font-weight: var(--num-weight); font-size: calc(54px * var(--d-scale)); color: var(--accent); line-height: 1.1; white-space: nowrap; }
+.reveal .mk-row span { font-size: 20px; color: #D8CEBD; }
+.reveal .mk-row p { font-size: 24px; color: #F2EBDC; text-align: right; }
+html.portrait .reveal .mk-row { position: static; grid-template-columns: 1fr 1fr; margin-top: 48px; }
+html.portrait .reveal .mk-row p { grid-column: span 2; text-align: left; }
+html.portrait .reveal .mk-row span { font-size: 26px; }
+/* views */
+.reveal .views { display: grid; grid-template-columns: 860px 1fr; gap: 72px; margin-top: 36px; align-items: center; }
+.reveal .vmap { width: 100%; height: auto; display: block; }
+.reveal .v-water { fill: color-mix(in srgb, var(--ink) 10%, transparent); }
+.reveal .v-zone { font: 600 18px var(--body); letter-spacing: .2em; text-transform: uppercase; fill: var(--muted); text-anchor: middle; }
+.reveal .v-bld { fill: var(--panel); stroke: var(--ink); stroke-width: 3; }
+.reveal .v-pool { fill: #7FAFB5; opacity: .7; }
+.reveal .vside path { fill: none; stroke: var(--muted); stroke-width: 10; stroke-linecap: round; opacity: .35; transition: all .3s; }
+.reveal .vside text { font: 600 20px var(--body); fill: var(--muted); transition: fill .3s; }
+.reveal .vside.on path { stroke: var(--accent); opacity: 1; }
+.reveal .vside.on text { fill: var(--ink); }
+.reveal .views[data-x] .vside { cursor: pointer; }
+.reveal .v201 circle { fill: var(--accent); stroke: var(--bg); stroke-width: 4; }
+.reveal .v201 text { font: 700 20px var(--body); fill: var(--ink); }
+.reveal .v-compass path { fill: var(--ink); } .reveal .v-compass text { font: 700 16px var(--body); fill: var(--ink); }
+.reveal .vlist li { padding: 18px 0 18px 20px; border-top: 1px solid var(--line); border-left: 4px solid transparent; cursor: pointer; transition: border-color .3s, opacity .3s; opacity: .55; }
+.reveal .vlist li.on { border-left-color: var(--accent); opacity: 1; }
+.reveal .vlist b { display: block; font-size: 27px; font-weight: 600; margin-bottom: 4px; }
+.reveal .vlist span { font-size: 21px; color: var(--muted); line-height: 1.4; }
+html.portrait .reveal .views { grid-template-columns: 1fr; gap: 32px; }
+html.portrait .reveal .vlist b { font-size: 34px; } html.portrait .reveal .vlist span { font-size: 28px; }
+/* objections */
+.reveal .objs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 48px; }
+.reveal .objs li { border: 1px solid var(--line); background: var(--panel); min-height: 120px; }
+.reveal .obq { display: block; width: 100%; text-align: left; background: none; border: 0; color: var(--ink); font: 600 26px var(--body); padding: 26px 64px 26px 28px; cursor: pointer; position: relative; }
+.reveal .obq::after { content: '+'; position: absolute; right: 26px; top: 50%; transform: translateY(-50%); font-size: 34px; color: var(--accent); font-weight: 400; transition: transform .3s; }
+.reveal .objs li.open .obq::after { transform: translateY(-50%) rotate(45deg); }
+.reveal .obq:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.reveal .oba { display: none; margin: 0; padding: 0 28px 26px; font-size: 20px; line-height: 1.5; color: var(--muted); }
+.reveal .objs li.open .oba { display: block; }
+.reveal .objs li.open { border-color: var(--accent); }
+.reveal .obj-hint { font-size: 18px; color: var(--muted); margin-top: 24px; }
+html.portrait .reveal .objs { grid-template-columns: 1fr; gap: 18px; }
+html.portrait .reveal .obq { font-size: 34px; } html.portrait .reveal .oba { font-size: 28px; }
+.reveal .vside text { font-size: 26px; } .reveal .v-zone { font-size: 22px; } .reveal .v201 text { font-size: 26px; }
+.reveal .v-bld { stroke-width: 4; }
