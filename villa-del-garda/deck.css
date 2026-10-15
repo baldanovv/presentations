@@ -368,16 +368,46 @@
 .reveal .teaser { width: 100%; height: 100%; object-fit: contain; background: #000; max-width: none; max-height: none; margin: 0; }
 .reveal .video-slide .foot { display: none; }
 /* unit */
-.reveal .unit { display: grid; grid-template-columns: 820px 1fr; gap: 64px; margin-top: 40px; }
-.reveal .unit .plan { margin: 0; background: #fff; padding: 24px; height: 640px; display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
+.reveal .unit { display: grid; grid-template-columns: 880px 1fr; gap: 56px; margin-top: 32px; }
+.reveal .unit .plan { margin: 0; background: #FBF6EF; padding: 20px; height: 700px; display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
 .reveal .unit .plan img { max-height: 100%; max-width: 100%; margin: 0; }
-.reveal .unit-side { display: grid; grid-template-rows: auto 1fr; gap: 28px; }
+.reveal .unit-side { display: grid; grid-template-rows: auto 1fr; gap: 26px; align-content: start; }
+.reveal .unit-side .specs div { padding: 10px 0; }
+.reveal .unit-side .specs dd { font-size: 26px; margin-top: 4px; }
+/* interactive plan */
+.reveal .uplan { width: 100%; height: 100%; display: block; }
+.reveal .uplan .room { fill: #fff; stroke: none; cursor: pointer; transition: fill .3s, opacity .3s; }
+.reveal .uplan .room[data-r="balc"] { fill: #F3EADF; }
+.reveal .uplan .furn { fill: none; stroke: #B9AC9C; stroke-width: 1.6; pointer-events: none; }
+.reveal .uplan .pool { fill: #BFE3EC; stroke: #8CC4D2; stroke-width: 1.6; cursor: pointer; }
+.reveal .uplan .pool-t { font: 500 15px var(--body); fill: #4F8A99; text-anchor: middle; pointer-events: none; }
+.reveal .uplan .wall { fill: none; stroke: #0E0E0E; stroke-width: 9; stroke-linejoin: miter; pointer-events: none; }
+.reveal .uplan .iwall polyline { fill: none; stroke: #0E0E0E; stroke-width: 5; stroke-linecap: square; }
+.reveal .uplan .iwall, .reveal .uplan .glass, .reveal .uplan .balc-edge, .reveal .uplan .exits, .reveal .uplan .rl { pointer-events: none; }
+.reveal .uplan .balc-edge { fill: none; stroke: #0E0E0E; stroke-width: 3; }
+.reveal .uplan .glass line { stroke: #8CC4D2; stroke-width: 4; }
+.reveal .uplan .exits path { fill: none; stroke: #C77B2E; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; opacity: 0; transition: opacity .3s; }
+.reveal .uplan .rl { font: 600 21px var(--body); fill: #0E0E0E; text-anchor: middle; letter-spacing: .01em; transition: opacity .3s; }
+.reveal .uplan .rl[data-r="pr"], .reveal .uplan .rl[data-r="st"], .reveal .uplan .rl[data-r="dress"], .reveal .uplan .rl[data-r="bath"] { font-size: 16px; }
+.reveal .uplan .room.on { fill: #ECB479; }
+.reveal .uplan .pool.on { fill: #9FD3E0; }
+.reveal .unit.focus .uplan .room:not(.on) { opacity: .45; }
+.reveal .unit.focus .uplan .rl:not(.on) { opacity: .35; }
+.reveal .unit.focus .uplan .furn { opacity: .5; }
+.reveal .unit.exit .uplan .exits path { opacity: 1; }
+.reveal .plegend { border-top: 1px solid var(--line); padding-top: 14px; }
+.reveal .plegend .pl-title { font-size: 16px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 12px; }
+.reveal .plegend ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.reveal .plegend li { font-size: 20px; font-weight: 600; padding: 8px 16px; border: 1.5px solid var(--ink); border-radius: 999px; cursor: pointer; transition: background .3s, color .3s, opacity .3s; }
+.reveal .plegend li.key { background: var(--ink); color: var(--bg); }
+.reveal .plegend li.on { background: var(--ink); color: var(--bg); }
+.reveal .unit.focus .plegend li:not(.on) { opacity: .45; }
+.reveal .plegend .pl-desc { font-size: 19px; line-height: 1.45; color: var(--muted); margin: 16px 0 0; min-height: 56px; }
 .reveal .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; margin: 0; }
 .reveal .specs div { border-top: 1px solid var(--line); padding: 14px 0; }
 .reveal .specs dt { font-size: 16px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .reveal .specs dd { margin: 6px 0 0; font-size: 30px; font-weight: 600; }
 .reveal .specs dd small { font-size: 18px; font-weight: 500; color: var(--muted); margin-left: 8px; }
-.reveal .unit-photo { margin: 0; background-size: cover; background-position: center; min-height: 260px; }
 /* payment */
 .reveal .pay-head { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; margin-top: 8px; }
 .reveal .pay-head span { display: block; font-size: 16px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
@@ -621,9 +651,12 @@ html.portrait .reveal .brands { grid-template-columns: 1fr 1fr; }
 /* video */
 html.portrait .reveal .video-slide .slide { align-items: center; }
 /* unit */
-html.portrait .reveal .unit .plan { height: 780px; }
+html.portrait .reveal .unit .plan { height: 820px; }
+html.portrait .reveal .uplan .rl { font-size: 26px; }
+html.portrait .reveal .uplan .rl[data-r="pr"], html.portrait .reveal .uplan .rl[data-r="st"], html.portrait .reveal .uplan .rl[data-r="dress"], html.portrait .reveal .uplan .rl[data-r="bath"] { font-size: 17px; }
+html.portrait .reveal .plegend li { font-size: 26px; padding: 10px 20px; }
+html.portrait .reveal .plegend .pl-desc { font-size: 24px; }
 html.portrait .reveal .specs dd { font-size: 34px; }
-html.portrait .reveal .unit-photo { min-height: 420px; }
 /* payment */
 html.portrait .reveal .pay-head { grid-template-columns: 1fr 1fr; gap: 32px; }
 html.portrait .reveal .pay-head div:first-child { grid-column: span 2; }
