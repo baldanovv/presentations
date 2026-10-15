@@ -25,7 +25,7 @@ F += ['<rect x="62" y="372" width="150" height="132" rx="6"/>', '<rect x="68" y=
 F += [f'<line x1="{x}" y1="311" x2="{x}" y2="327"/>' for x in (222, 254, 286)] + ['<rect x="194" y="311" width="122" height="16" rx="2"/>']
 F += ['<ellipse cx="135" cy="236" rx="15" ry="20"/>', '<rect x="122" y="212" width="26" height="10" rx="3"/>', '<rect x="196" y="212" width="50" height="30" rx="4"/>', '<circle cx="221" cy="227" r="8"/>']
 F += ['<ellipse cx="612" cy="74" rx="13" ry="18"/>', '<rect x="600" y="46" width="24" height="9" rx="3"/>', '<rect x="462" y="44" width="40" height="24" rx="4"/>', '<circle cx="482" cy="56" r="6"/>']
-F += ['<path d="M392,141 L640,141 L676,330 L636,330 L604,178 L392,178 Z"/>'] + [f'<circle cx="{cx}" cy="{cy}" r="7"/>' for cx, cy in ((432, 152), (452, 152), (432, 167), (452, 167))]
+F += ['<path d="M454,141 L640,141 L676,330 L636,330 L604,178 L454,178 Z"/>'] + [f'<circle cx="{cx}" cy="{cy}" r="7"/>' for cx, cy in ((482, 152), (502, 152), (482, 167), (502, 167))]
 F += ['<rect x="614" y="200" width="22" height="36" rx="4"/>']
 F += ['<circle cx="480" cy="282" r="34"/>'] + [f'<rect x="{x-11}" y="{y-11}" width="22" height="22" rx="6" transform="rotate(45 {x} {y})"/>' for x, y in ((446, 248), (514, 248), (446, 316), (514, 316))]
 F += ['<path d="M618,372 Q700,420 650,512 L626,500 Q666,428 604,392 Z"/>', '<circle cx="586" cy="446" r="24"/>']
@@ -34,7 +34,10 @@ s.append('<g class="furn">' + "".join(F) + '</g>')
 s.append('<rect class="pool" data-r="balc" x="588" y="542" width="138" height="72" rx="6"/>')
 s.append('<text class="pool-t" x="657" y="583">бассейн</text>')
 # walls
-s.append('<path class="wall" d="M50,330 L100,330 L100,200 L365,200 L385,135 L450,135 L450,35 L630,35 L720,530 L50,530 Z"/>')
+s.append('<path class="wall" d="M394,135 L385,135 L365,200 L100,200 L100,330 L50,330 L50,530 L720,530 L630,35 L450,35 L450,135 L442,135"/>')
+# entrance door (position taken from the door swing on the developer plan)
+s.append('<g class="entry" data-r="entry"><path class="leaf" d="M442,135 L442,183"/><path class="swing" d="M394,135 A48,48 0 0 0 442,183"/>'
+         '<path class="arrow" d="M418,76 L418,124 M408,112 L418,126 L428,112"/><text x="404" y="104" style="text-anchor:end">Вход</text></g>')
 W = ["262,200 262,305", "100,305 145,305", "185,305 262,305", "262,305 325,305", "358,305 365,305", "365,200 365,305",
      "320,305 320,368", "320,412 320,530", "450,135 540,135", "590,135 647,135"]
 s.append('<g class="iwall">' + "".join(f'<polyline points="{w}"/>' for w in W) + '</g>')
@@ -55,6 +58,7 @@ ITEMS = [
  ("bed", "Спальня", "Двуспальная кровать, окно в пол и свой выход на балкон", False),
  ("dress", "Гардеробная", "Встроенная гардеробная прямо при спальне", False),
  ("bath", "Ванная", "Основной санузел рядом со спальней", False),
+ ("entry pr", "Вход", "Вход из общего коридора, гостевой санузел сразу у двери", False),
  ("pr", "Гостевой санузел", "Отдельный санузел для гостей у входа", False),
  ("st", "Кладовая", "Место для хранения вещей", False),
  ("balc", "Балкон с бассейном", "14,9 м², собственный плунж бассейн и шезлонги", False),

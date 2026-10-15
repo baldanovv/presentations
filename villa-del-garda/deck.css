@@ -387,6 +387,13 @@
 .reveal .uplan .balc-edge { fill: none; stroke: #0E0E0E; stroke-width: 3; }
 .reveal .uplan .glass line { stroke: #8CC4D2; stroke-width: 4; }
 .reveal .uplan .exits path { fill: none; stroke: #C77B2E; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; opacity: 0; transition: opacity .3s; }
+.reveal .uplan .entry { pointer-events: none; }
+.reveal .uplan .entry .leaf { stroke: #0E0E0E; stroke-width: 4; }
+.reveal .uplan .entry .swing { fill: none; stroke: #0E0E0E; stroke-width: 1.4; stroke-dasharray: 4 4; }
+.reveal .uplan .entry .arrow { fill: none; stroke: #0E0E0E; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; transition: stroke .3s; }
+.reveal .uplan .entry text { font: 700 17px var(--body); fill: #0E0E0E; text-anchor: middle; letter-spacing: .08em; text-transform: uppercase; transition: fill .3s; }
+.reveal .uplan .entry.on .arrow, .reveal .uplan .entry.on .leaf { stroke: #C77B2E; }
+.reveal .uplan .entry.on text { fill: #C77B2E; }
 .reveal .uplan .rl { font: 600 21px var(--body); fill: #0E0E0E; text-anchor: middle; letter-spacing: .01em; transition: opacity .3s; }
 .reveal .uplan .rl[data-r="pr"], .reveal .uplan .rl[data-r="st"], .reveal .uplan .rl[data-r="dress"], .reveal .uplan .rl[data-r="bath"] { font-size: 16px; }
 .reveal .uplan .room.on { fill: #ECB479; }
