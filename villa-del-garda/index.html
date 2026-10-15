@@ -15,7 +15,7 @@
 <meta name="theme-color" content="#0E0E0E">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../assets/vendor/reveal.css">
-<link rel="stylesheet" href="deck.css?v=20261016005">
+<link rel="stylesheet" href="deck.css?v=20261016006">
 </head>
 <body>
 <div class="reveal" data-theme="empire">
@@ -577,7 +577,7 @@
 
 <!-- P7 ЮНИТ -->
 <section class="dark unit-slide">
-  <div class="ubg"><i data-bg="liv" style="background-image:url(../assets/garda/r-liv.jpg)" class="on"></i><i data-bg="kit" style="background-image:url(../assets/garda/r-kit.jpg)"></i><i data-bg="bed" style="background-image:url(../assets/garda/r-bed.jpg)"></i><i data-bg="dress" style="background-image:url(../assets/garda/r-dress.jpg)"></i><i data-bg="bath" style="background-image:url(../assets/garda/r-bath.jpg)"></i><i data-bg="balc" style="background-image:url(../assets/garda/r-balc.jpg)"></i></div>
+  <div class="ubg"><video data-bg="liv" class="on" src="../assets/garda/v-liv.mp4" poster="../assets/garda/v-liv.jpg" muted loop playsinline preload="auto"></video><i data-bg="kit" style="background-image:url(../assets/garda/r-kit.jpg)"></i><video data-bg="bed" src="../assets/garda/v-bed.mp4" poster="../assets/garda/v-bed.jpg" muted loop playsinline preload="metadata"></video><i data-bg="dress" style="background-image:url(../assets/garda/r-dress.jpg)"></i><i data-bg="bath" style="background-image:url(../assets/garda/r-bath.jpg)"></i><video data-bg="balc" src="../assets/garda/v-balc.mp4" poster="../assets/garda/v-balc.jpg" muted loop playsinline preload="metadata"></video></div>
   <div class="slide">
     <p class="label">Ваша квартира</p>
     <h2>1 спальня, юнит 201</h2>
@@ -950,7 +950,10 @@
       desc.textContent = d || base;
       const bgOf = { liv: 'liv', kit: 'kit', bed: 'bed', dress: 'dress', bath: 'bath', pr: 'bath', st: 'liv', balc: 'balc', 'liv bed balc': 'balc', 'entry pr': 'kit' };
       const sec = c.closest('section'), b = bgOf[ids] || 'liv';
-      if (sec) sec.querySelectorAll('.ubg i').forEach(i => i.classList.toggle('on', i.dataset.bg === b));
+      if (sec) sec.querySelectorAll('.ubg [data-bg]').forEach(i => {
+        const on = i.dataset.bg === b; i.classList.toggle('on', on);
+        if (i.tagName === 'VIDEO') { if (on) { const p = i.play(); if (p) p.catch(() => {}); } else i.pause(); }
+      });
     };
     c.querySelectorAll('.plegend li').forEach(li => {
       const go = () => set(li.dataset.r, li.dataset.desc);
@@ -963,6 +966,12 @@
     });
     c.addEventListener('mouseleave', () => set(null));
   });
+  // unit plan background video: play only while the slide is on screen
+  const ubgPlay = () => document.querySelectorAll('.unit-slide').forEach(sec => {
+    const here = sec.classList.contains('present') || portrait;
+    sec.querySelectorAll('.ubg video').forEach(v => { if (here && v.classList.contains('on')) { const p = v.play(); if (p) p.catch(() => {}); } else v.pause(); });
+  });
+  Reveal.on('ready', ubgPlay); Reveal.on('slidechanged', ubgPlay);
   // ROI calculator (company method)
   const fmt = n => (n < 0 ? '−' : '') + Math.round(Math.abs(n)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   const pct = n => (Math.round(n * 10) / 10).toFixed(1).replace('.', ',') + '%';
