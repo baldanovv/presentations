@@ -15,7 +15,7 @@
 <meta name="theme-color" content="#0E0E0E">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <link rel="stylesheet" href="../assets/vendor/reveal.css">
-<link rel="stylesheet" href="deck.css?v=20261016003">
+<link rel="stylesheet" href="deck.css?v=20261016005">
 </head>
 <body>
 <div class="reveal" data-theme="empire">
@@ -576,7 +576,8 @@
 </section>
 
 <!-- P7 ЮНИТ -->
-<section class="light unit-slide">
+<section class="dark unit-slide">
+  <div class="ubg"><i data-bg="liv" style="background-image:url(../assets/garda/r-liv.jpg)" class="on"></i><i data-bg="kit" style="background-image:url(../assets/garda/r-kit.jpg)"></i><i data-bg="bed" style="background-image:url(../assets/garda/r-bed.jpg)"></i><i data-bg="dress" style="background-image:url(../assets/garda/r-dress.jpg)"></i><i data-bg="bath" style="background-image:url(../assets/garda/r-bath.jpg)"></i><i data-bg="balc" style="background-image:url(../assets/garda/r-balc.jpg)"></i></div>
   <div class="slide">
     <p class="label">Ваша квартира</p>
     <h2>1 спальня, юнит 201</h2>
@@ -947,6 +948,9 @@
       c.classList.toggle('focus', list.length > 0);
       c.classList.toggle('exit', ids === 'liv bed balc');
       desc.textContent = d || base;
+      const bgOf = { liv: 'liv', kit: 'kit', bed: 'bed', dress: 'dress', bath: 'bath', pr: 'bath', st: 'liv', balc: 'balc', 'liv bed balc': 'balc', 'entry pr': 'kit' };
+      const sec = c.closest('section'), b = bgOf[ids] || 'liv';
+      if (sec) sec.querySelectorAll('.ubg i').forEach(i => i.classList.toggle('on', i.dataset.bg === b));
     };
     c.querySelectorAll('.plegend li').forEach(li => {
       const go = () => set(li.dataset.r, li.dataset.desc);

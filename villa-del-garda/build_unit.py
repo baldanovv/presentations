@@ -68,5 +68,7 @@ lg = '<div class="plegend"><p class="pl-title">Планировка</p><ul>' + "
 h = open("index.html").read()
 h = re.sub(r'<figure class="plan">.*?</figure>', '<figure class="plan">\n' + svg + '\n</figure>', h, count=1, flags=re.S)
 h = re.sub(r'<figure class="unit-photo"[^>]*></figure>|<div class="plegend">.*?</div>', lg, h, count=1, flags=re.S)
+bg = '<div class="ubg">' + "".join(f'<i data-bg="{k}" style="background-image:url(../assets/garda/r-{k}.jpg)"{" class=\"on\"" if k == "liv" else ""}></i>' for k in ("liv", "kit", "bed", "dress", "bath", "balc")) + '</div>'
+h = re.sub(r'<section class="(?:light|dark) unit-slide">\s*(?:<div class="ubg">.*?</div>\s*)?<div class="slide">', '<section class="dark unit-slide">\n  ' + bg + '\n  <div class="slide">', h, count=1, flags=re.S)
 open("index.html", "w").write(h)
 print("ok", len(svg))
