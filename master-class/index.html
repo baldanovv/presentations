@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Мастер класс: презентация через Claude и GitHub</title>
+<meta property="og:title" content="Мастер класс: презентация через Claude и GitHub">
+<meta property="og:description" content="Как за два вечера сделать интерактивную презентацию для клиента. 7 минут.">
+<meta property="og:image" content="poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0E0E0E;--panel:#1A1A1A;--ink:#F4F1EC;--mut:#A7A198;--acc:#ECB479;--line:rgba(244,241,236,.1)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.5 Montserrat,system-ui,sans-serif;min-height:100vh}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 24px 64px}
+.eyebrow{color:var(--acc);font:600 12px/1 Montserrat;letter-spacing:.18em;text-transform:uppercase}
+h1{font:700 clamp(26px,4.4vw,48px)/1.1 Unbounded,sans-serif;margin:14px 0 10px;letter-spacing:-.01em}
+.sub{color:var(--mut);max-width:640px;margin-bottom:28px}
+.grid{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
+.player{border-radius:16px;overflow:hidden;background:#000;border:1px solid var(--line);aspect-ratio:16/9}
+video{width:100%;height:100%;display:block}
+.chapters{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:10px}
+.chapters h2{font:600 12px/1 Montserrat;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);padding:10px 12px 12px}
+button.ch{all:unset;cursor:pointer;display:flex;gap:12px;align-items:baseline;width:100%;box-sizing:border-box;padding:10px 12px;border-radius:10px;transition:background .2s}
+button.ch:hover{background:rgba(244,241,236,.05)}
+button.ch.on{background:rgba(236,180,121,.12)}
+.n{font:700 13px/1 Unbounded;color:var(--acc);min-width:24px}
+.t{flex:1;font-weight:500;font-size:15px;line-height:1.3}
+.tm{color:var(--mut);font-size:13px;font-variant-numeric:tabular-nums}
+.foot{margin-top:28px;color:var(--mut);font-size:14px}
+.foot a{color:var(--acc);text-decoration:none}
+@media (max-width:860px){.grid{grid-template-columns:1fr}.wrap{padding:24px 16px 48px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Мастер класс · 7 минут</div>
+  <h1>Презентация для клиента через Claude и GitHub</h1>
+  <p class="sub">Как за два вечера сделать интерактивную презентацию с картой, калькулятором доходности и планировкой, которая открывается по одной ссылке.</p>
+  <div class="grid">
+    <div class="player"><video id="v" controls playsinline preload="metadata" poster="poster.jpg"><source src="video.mp4" type="video/mp4"></video></div>
+    <nav class="chapters" id="chs"><h2>Главы</h2></nav>
+  </div>
+  <p class="foot">Пример презентации из видео: <a href="../villa-del-garda/">Villa del Garda, MR. EIGHT</a></p>
+</div>
+<script>
+const CH=[[4,'01','Результат'],[34.9,'02','Почему не обычные слайды'],[70.9,'03','Подготовка'],[121.3,'04','Доступ к сайтам'],[189.2,'05','Материалы'],[234.7,'06','Работа с Claude'],[316.8,'07','Структура продающей презентации'],[377.9,'08','Речь и подготовка к звонку'],[418.1,'09','Итог']];
+const v=document.getElementById('v'),nav=document.getElementById('chs');
+const fmt=s=>Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');
+const btns=CH.map(([t,n,title])=>{const b=document.createElement('button');b.className='ch';b.innerHTML=`<span class="n">${n}</span><span class="t">${title}</span><span class="tm">${fmt(t)}</span>`;b.onclick=()=>{v.currentTime=t;v.play();};nav.appendChild(b);return b;});
+v.addEventListener('timeupdate',()=>{let k=-1;CH.forEach(([t],i)=>{if(v.currentTime>=t-0.05)k=i;});btns.forEach((b,i)=>b.classList.toggle('on',i===k));});
+</script>
+</body>
+</html>
