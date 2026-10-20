@@ -798,3 +798,17 @@ html.portrait .reveal .big-pop { grid-template-columns: 1fr 1fr; row-gap: 32px; 
 .reveal .big-pop span { display: block; margin-top: 10px; }
 .reveal .big-pop > div { padding-bottom: 18px; }
 .reveal .big-pop + .stats { margin-top: 72px; }
+
+/* USD conversion (AED pegged at 3.6725) */
+.reveal .usd { display: block; font-style: normal; font-family: var(--body); font-size: 24px; font-weight: 600; color: var(--ink); opacity: .7; margin-top: 10px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.reveal section[data-background-image] .usd { color: #F4F1EC; opacity: .8; }
+.reveal .pay-head .usd { font-size: 26px; margin-top: 4px; }
+.reveal .dp .usd { margin: -2px 0 10px; font-size: 22px; }
+.reveal .roi .usd { margin: -10px 0 16px; font-size: 22px; }
+.reveal .mg-rent .usd { font-size: 18px; margin-top: 6px; }
+.reveal .usd-in { font-style: normal; font-weight: 500; opacity: .7; white-space: nowrap; font-size: .85em; }
+.reveal .rows dd .usd-in, .reveal .mg .mb b .usd-in, .reveal .mg-sum b .usd-in { font-family: var(--body); font-size: 15px; font-weight: 500; margin-left: 8px; color: var(--muted); opacity: 1; }
+.reveal .mg .mb { grid-template-columns: 170px 1fr 200px; }
+.reveal table.paytbl td:nth-child(4), .reveal table.paytbl th:nth-child(4) { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+.reveal table.paytbl td:nth-child(4) { font-size: 21px; }
+html.portrait .reveal .mg .mb { grid-template-columns: 200px 1fr 220px; }
