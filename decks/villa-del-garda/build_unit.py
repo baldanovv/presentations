@@ -72,8 +72,8 @@ BG = {"liv": "v", "kit": "r", "bed": "v", "dress": "r", "bath": "r", "balc": "v"
 def bgel(k, kind):
     on = ' class="on"' if k == "liv" else ""
     if kind == "v":
-        return f'<video data-bg="{k}"{on} src="../assets/garda/v-{k}.mp4" poster="../assets/garda/v-{k}.jpg" muted loop playsinline preload="{"auto" if k == "liv" else "metadata"}"></video>'
-    return f'<i data-bg="{k}"{on} style="background-image:url(../assets/garda/r-{k}.jpg)"></i>'
+        return f'<video data-bg="{k}"{on} src="img/v-{k}.mp4" poster="img/v-{k}.jpg" muted loop playsinline preload="{"auto" if k == "liv" else "metadata"}"></video>'
+    return f'<i data-bg="{k}"{on} style="background-image:url(img/r-{k}.jpg)"></i>'
 bg = '<div class="ubg">' + "".join(bgel(k, v) for k, v in BG.items()) + '</div>'
 h = re.sub(r'<section class="(?:light|dark) unit-slide">\s*(?:<div class="ubg">.*?</div>\s*)?<div class="slide">', '<section class="dark unit-slide">\n  ' + bg + '\n  <div class="slide">', h, count=1, flags=re.S)
 open("index.html", "w").write(h)

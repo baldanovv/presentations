@@ -1,7 +1,7 @@
 import re, time
-src=open('villa-del-garda/index.html',encoding='utf-8',errors='surrogateescape').read()
-t=open('kore/_template.html',encoding='utf-8').read()
-svg=open('kore/_dmap.svg.html',encoding='utf-8',errors='surrogateescape').read()
+src=open('decks/villa-del-garda/index.html',encoding='utf-8',errors='surrogateescape').read()
+t=open('decks/kore/_template.html',encoding='utf-8').read()
+svg=open('decks/kore/_dmap.svg.html',encoding='utf-8',errors='surrogateescape').read()
 def notes(marker):
     i=src.index('<!-- '+marker+' -->'); j=src.index('</section>',i)
     m=re.search(r'<aside class="notes">.*?</aside>',src[i:j],re.S); return m.group(0)
@@ -15,6 +15,6 @@ def fix(n,marker):
 for m in re.findall(r'<!--NOTES:(.*?)-->',t):
     t=t.replace('<!--NOTES:'+m+'-->',fix(notes(m),m))
 t=t.replace('__DMAP__',svg.replace('Dubai Islands и DLRC','и DLRC, где находится KORE').replace('x="640.0" y="626.4">DLRC · KORE','x="560.0" y="626.4">DLRC · KORE')).replace('__V__',time.strftime('%Y%m%d%H%M'))
-open('kore/index.html','w',encoding='utf-8',errors='surrogateescape').write(t)
+open('decks/kore/index.html','w',encoding='utf-8',errors='surrogateescape').write(t)
 for w in ['Garda','Dubai Islands','Mr. Eight','MR. EIGHT','Creek Harbour','Islands']:
     for mm in re.finditer(w,t): print(w, t[max(0,mm.start()-120):mm.start()+60].replace('\n',' ')[:200])

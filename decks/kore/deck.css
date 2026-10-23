@@ -38,7 +38,7 @@
 .reveal .meta.top { top: 62px; padding-bottom: 14px; border-bottom: var(--rule) solid var(--fg); }
 .reveal .meta.bot { bottom: 46px; padding-top: 14px; border-top: var(--rule) solid var(--fg); color: var(--muted); }
 .reveal .meta.bot .pg { color: var(--fg); }
-.reveal .meta .mk { width: 34px; height: 28px; background: var(--fg); -webkit-mask: url(../assets/brand/logo-mark.png) center / contain no-repeat; mask: url(../assets/brand/logo-mark.png) center / contain no-repeat; display: inline-block; vertical-align: -6px; margin-right: 14px; }
+.reveal .meta .mk { width: 34px; height: 28px; background: var(--fg); -webkit-mask: url(../../assets/brand/logo-mark.png) center / contain no-repeat; mask: url(../../assets/brand/logo-mark.png) center / contain no-repeat; display: inline-block; vertical-align: -6px; margin-right: 14px; }
 
 /* ===== Type ===== */
 /* Russian display: Plex Mono 600 uppercase, tracked (Anton has no Cyrillic) */
@@ -93,7 +93,7 @@
 .reveal .bottom-third { position: absolute; left: var(--m); right: var(--m); bottom: 150px; }
 
 /* ===== Cover ===== */
-.reveal .cover-mark { position: absolute; right: var(--m); bottom: 150px; width: 210px; height: 174px; background: var(--fg); -webkit-mask: url(../assets/brand/logo-mark.png) center / contain no-repeat; mask: url(../assets/brand/logo-mark.png) center / contain no-repeat; }
+.reveal .cover-mark { position: absolute; right: var(--m); bottom: 150px; width: 210px; height: 174px; background: var(--fg); -webkit-mask: url(../../assets/brand/logo-mark.png) center / contain no-repeat; mask: url(../../assets/brand/logo-mark.png) center / contain no-repeat; }
 .reveal .cover-who { font-size: 22px; letter-spacing: .1em; text-transform: uppercase; margin-top: 30px; color: var(--muted); }
 
 /* ===== Company ===== */
