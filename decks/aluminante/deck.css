@@ -10,7 +10,7 @@
   --c-muted: #5A5A5A;
   --c-caption: #6B6B6B;
   --c-line: #D9D9D9;
-  --c-ghost: #EFEFEF;   /* decorative giant words only, never text to read */
+  --c-ghost: #F4F4F4;   /* decorative giant words only, never text to read */
 
   /* type: both fonts have Cyrillic */
   --font-display: 'Playfair Display', Georgia, serif;
@@ -48,13 +48,13 @@
 .reveal .logo i { font: italic 400 19px var(--font-display); margin-top: 6px; opacity: .85; }
 
 /* ===== 01 Title ===== */
-.reveal .title .logo { position: absolute; left: 50%; top: var(--s-7); transform: translateX(-50%); }
-.reveal .title .ghost { position: absolute; left: 0; right: 0; top: 300px; text-align: center; font: 400 400px/1 var(--font-display); color: var(--c-ghost); letter-spacing: .04em; pointer-events: none; }
-.reveal .title .t-head { position: absolute; left: 0; right: 0; top: 370px; text-align: center; }
+.reveal .title .logo { position: absolute; left: 50%; top: var(--s-6); transform: translateX(-50%); }
+.reveal .title .ghost { position: absolute; left: 0; right: 0; top: 250px; text-align: center; font: 400 220px/1 var(--font-display); color: var(--c-ghost); letter-spacing: .04em; pointer-events: none; }
+.reveal .title .t-head { position: absolute; left: 0; right: 0; top: 480px; text-align: center; }
 .reveal .title h1 { font-size: var(--t-h1); line-height: 1.02; }
 .reveal .title .lead { font: italic 400 var(--t-lead) var(--font-display); color: var(--c-muted); margin-top: var(--s-3); }
 .reveal .title .cap { margin-top: var(--s-5); }
-.reveal .title .band { position: absolute; left: 0; right: 0; bottom: 0; height: 300px; background: center 60% / cover no-repeat; }
+.reveal .title .band { position: absolute; left: 0; right: 0; bottom: 0; height: 250px; background: center 60% / cover no-repeat; }
 
 /* ===== 02 Opportunity: three prices, thin lines in proportion to the price ===== */
 .reveal .opp .o-photo { position: absolute; left: 0; top: 0; bottom: 0; width: 640px; background: center / cover no-repeat; }
@@ -140,6 +140,55 @@
 .reveal .bc .m { margin-top: var(--s-3); padding-top: var(--s-2); border-top: 1px solid rgba(255,255,255,.22); font: 400 var(--t-small)/1.4 var(--font-body); }
 .reveal .bc .m span { font: 500 var(--t-cap) var(--font-body); letter-spacing: var(--cap-track); text-transform: uppercase; color: #E2E2E2; margin-right: 16px; }
 
+/* ===== 03 UAE market: three numbers in a row (same Number Ticker as slide 04) ===== */
+.reveal .stats.three { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-6); margin-top: var(--s-7); }
+.reveal .stats.three b { font-size: 112px; }
+
+/* ===== 07 Sun protection: three product cards, photo on top ===== */
+.reveal .trio { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-5); margin-top: var(--s-5); }
+.reveal .trio article { display: flex; flex-direction: column; min-height: 0; }
+.reveal .trio .ph { height: 380px; flex: none; background: center / cover no-repeat; }
+.reveal .trio h3 { font: 400 48px/1.1 var(--font-display); margin-top: var(--s-3); }
+.reveal .trio p { font: 400 var(--t-body)/1.4 var(--font-body); color: var(--c-muted); margin-top: var(--s-1); }
+/* two lines kept for every description, so the spec lines line up */
+.reveal .trio p:not(.spec) { min-height: 2.8em; }
+.reveal .trio .spec { color: var(--c-ink); font-size: var(--t-small); border-top: 1px solid var(--c-line); padding-top: var(--s-2); margin-top: var(--s-2); }
+
+/* ===== 08 Room to grow: wide photo on top, headline and product lines below ===== */
+.reveal .wide .w-photo { position: absolute; left: 0; right: 0; top: 0; height: 470px; background: center / cover no-repeat; }
+.reveal .wide .w-body { position: absolute; left: var(--pad-x); right: var(--pad-x); top: 550px; display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-7); align-items: start; }
+.reveal .wide .w-body h2 { font-size: var(--t-h2); line-height: 1.08; margin-top: var(--s-3); }
+.reveal .wide .facts { margin-top: 0; }
+.reveal .wide .facts b { display: inline-block; min-width: 190px; }
+.reveal .wide .w-src { position: absolute; left: var(--pad-x); right: var(--pad-x); bottom: var(--pad-bottom); }
+
+/* ===== 10 Unit economics: cost ladder, unknown lines stay visible as [УТОЧНИТЬ] ===== */
+.reveal .ladder { margin: var(--s-6) 0 0; padding: 0; border-top: 1px solid var(--c-line); counter-reset: step; }
+.reveal .ladder li { list-style: none; display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; align-items: baseline; gap: var(--s-3); padding: 20px 0; border-bottom: 1px solid var(--c-line); counter-increment: step; }
+.reveal .ladder li::before { content: '0' counter(step); font: 500 var(--t-cap) var(--font-body); letter-spacing: .1em; color: var(--c-caption); }
+.reveal .ladder span { font: 400 var(--t-body) var(--font-body); }
+.reveal .ladder b { font: 400 56px/1 var(--font-display); white-space: nowrap; text-align: right; font-variant-numeric: lining-nums; }
+.reveal .ladder b.tbd { font: 400 var(--t-small) var(--font-body); color: var(--c-muted); white-space: normal; }
+.reveal .ladder li.ref { background: var(--c-ink); color: var(--c-paper); margin: 0 -36px; padding-left: 36px; padding-right: 36px; border-bottom: 0; }
+.reveal .ladder li.ref::before { content: '·'; color: var(--c-paper); }
+
+/* ===== 13 Investment: three columns ===== */
+.reveal .cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-6); margin-top: var(--s-7); }
+.reveal .cols > div { border-top: 2px solid var(--c-ink); padding-top: var(--s-4); }
+.reveal .cols .when { font: 500 var(--t-cap) var(--font-body); letter-spacing: var(--cap-track); text-transform: uppercase; color: var(--c-muted); }
+.reveal .cols h3 { font: 400 48px/1.15 var(--font-display); margin-top: var(--s-3); }
+.reveal .cols p:not(.when) { font: 400 var(--t-body)/1.45 var(--font-body); color: var(--c-muted); margin-top: var(--s-3); }
+
+/* ===== 15 Next step: dark slide, one action ===== */
+.reveal .next .body { justify-content: center; align-items: flex-start; }
+.reveal .logo.inv { background: var(--c-paper); color: var(--c-ink); margin-bottom: var(--s-6); }
+.reveal .next h2 { font-size: var(--t-h1); line-height: 1.02; margin-top: var(--s-3); }
+.reveal .next .lead { font: italic 400 var(--t-lead) var(--font-display); color: #C8C8C8; margin-top: var(--s-4); }
+.reveal .next .then { font: 400 var(--t-body) var(--font-body); color: #C8C8C8; margin-top: var(--s-4); }
+.reveal .next .who { font: 400 var(--t-body) var(--font-body); color: #C8C8C8; margin-top: var(--s-6); }
+.reveal .next .src { margin-top: var(--s-6); color: #9A9A9A; }
+.reveal .dark .foot { color: #9A9A9A; }
+
 /* ===== Slides still to be built ===== */
 .reveal .todo .body { justify-content: center; }
 .reveal .todo h2 { color: var(--c-caption); }
@@ -194,3 +243,19 @@ html.portrait .reveal .bc.big { padding-top: 200px; }
 html.portrait .reveal .bc.big::before { background: linear-gradient(rgba(10,10,10,0), rgba(10,10,10,.15) 25%, rgba(10,10,10,.7) 40%); }
 html.portrait .reveal .bc:not(.big)::before { background: linear-gradient(90deg, rgba(10,10,10,.72), rgba(10,10,10,.6)); }
 html.portrait .reveal .bc:not(.big) > p { max-width: none; }
+html.portrait .reveal .stats.three { grid-template-columns: 1fr; gap: var(--s-5); margin-top: var(--s-6); }
+html.portrait .reveal .trio { grid-template-columns: 1fr; gap: var(--s-4); }
+html.portrait .reveal .trio article { display: grid; grid-template-columns: 300px minmax(0, 1fr); column-gap: var(--s-4); align-items: start; }
+html.portrait .reveal .trio .ph { grid-row: 1 / 4; height: 100%; min-height: 300px; }
+html.portrait .reveal .trio h3 { margin-top: 0; font-size: 56px; }
+html.portrait .reveal .trio p:not(.spec) { min-height: 0; }
+html.portrait .reveal .wide .w-photo { height: 560px; }
+html.portrait .reveal .wide .w-body { left: 72px; right: 72px; top: 640px; grid-template-columns: 1fr; gap: var(--s-5); }
+html.portrait .reveal .wide .w-body h2 { font-size: 80px; }
+html.portrait .reveal .wide .w-src { left: 72px; right: 72px; bottom: 120px; }
+html.portrait .reveal .ladder li { grid-template-columns: 56px minmax(0, 1fr); row-gap: var(--s-1); }
+html.portrait .reveal .ladder b { grid-column: 2; text-align: left; }
+html.portrait .reveal .ladder li.ref { margin: 0 -32px; padding-left: 32px; padding-right: 32px; }
+html.portrait .reveal .cols { grid-template-columns: 1fr; gap: var(--s-5); margin-top: var(--s-6); }
+html.portrait .reveal .next h2 { font-size: 92px; }
+html.portrait .reveal .next .lead { font-size: 52px; }

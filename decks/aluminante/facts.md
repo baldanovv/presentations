@@ -27,6 +27,7 @@
 | Профили | диагональ от 1 до 32 см | showroom стр. 2 |
 | Цеха | экструзия и обработка, анодирование, ламинирование, порошковая покраска, центр матриц, центр разработки и дизайна | showroom стр. 3 |
 | Слоган | The best or nothing | showroom стр. 10 |
+| Видеозвонок | «Make an appointment for a video presentation call from our Istanbul showroom» | showroom стр. 10 (стр. 11 это обложка) |
 
 ## Продукты в фокусе
 | Что | Значение | Источник |
@@ -39,6 +40,27 @@
 | Dazzoni | автоматические zip шторы для крыш | brochure стр. 48, 49 |
 | Zilli | маркизы | brochure стр. 50, 51 |
 | Дополнительная линейка | перголы Acura, Vista, Skytech; остекление Orizzonte, Spazio, Skyline; двери Agio, Piega | brochure стр. 12 |
+| Vito Zip, применение | беседки, веранды, открытые террасы; защита от солнца и ветра | brochure стр. 46 |
+| Vito Zip, характеристики | ветер до 80 км/ч; ширина от 575 до 5 000 мм; высота от 500 до 7 500 мм; ткань Serge Ferrari, гарантия на ткань 5 лет | brochure стр. 47 |
+| Dazzoni, применение | веранды, зимние сады, стеклянные крыши | brochure стр. 48 |
+| Dazzoni, характеристики | до 6 000 × 6 000 мм, площадь до 36 м², мотор SOMFY | brochure стр. 49 |
+| Zilli, применение | кафе, рестораны, магазины, зоны отдыха | brochure стр. 50 |
+| Zilli, характеристики | ширина до 7 000 мм, вынос до 3 500 мм, площадь до 25 м² | brochure стр. 51 |
+| Acura, модуль | ширина до 4 000 мм, вынос до 9 000 мм | brochure стр. 15 |
+
+## Фото в деке
+| Файл | Откуда |
+|---|---|
+| img/showroom.jpg | showroom стр. 6, визуализация шоурума |
+| img/profiles.jpg | showroom стр. 3 |
+| img/vito-zip.jpg, img/dazzoni.jpg, img/zilli.jpg | brochure стр. 47, 48, 50 |
+| img/acura.jpg | brochure стр. 15 |
+| img/training.jpg | brochure стр. 9 |
+| img/terrace.jpg | plisse стр. 1 |
+| img/mesh.jpg | plisse стр. 2 |
+| img/villa.jpg | plisse стр. 2 |
+| img/factory.jpg | showroom стр. 2 |
+| img/pergola.jpg | showroom стр. 1 (в деке сейчас не используется) |
 
 ## Сроки и логистика
 | Что | Значение | Источник |
@@ -54,6 +76,7 @@
 | Что | Источник |
 |---|---|
 | Фото и видео всех систем, каталоги печатные и электронные, брендинг офиса | showroom стр. 5 |
+| ПО для раскроя и профилирования («Nesting and profiling software») | showroom стр. 5 |
 | Обучение и сертификация в Турции, видеоконференции, персональный менеджер | showroom стр. 5 |
 | ПО для раскроя, прайс листы для клиентов, программа для расчётов, техконсультации | showroom стр. 5 |
 | Дополнительно: сайт, продвижение в Instagram, SEO, рассылки, IP телефония, скрипты и видео обучение для продажников, внедрение CRM | showroom стр. 5 |
@@ -69,7 +92,7 @@
 ## Цены: Дубай против завода
 | Изделие | Компания А | Компания Б | Aluminante, себестоимость | Источник |
 |---|---|---|---|---|
-| Плиссе 1,0 × 2,2 м | 800 AED + VAT (840 AED) | 950 AED | 185 AED ($50) | запрос цен; Валера |
+| Плиссе 1,0 × 2,2 м | 800 AED + VAT (840 AED) | 950 AED | $50 (≈ AED 184 at 3.6725) | запрос цен; Валера |
 | Плиссе 3,0 × 2,2 м | 1 400 AED + VAT (1 470 AED) | 2 100 AED | [УТОЧНИТЬ: себестоимость 3,0 × 2,2 м] | запрос цен |
 
 Названия конкурентов в деке не показываем.
@@ -81,8 +104,15 @@
 | B2C | розница под ключ: изготовление, доставка, монтаж |
 | Франшиза | готовый бизнес для инвесторов и новичков, высокая маржа, поддержка завода |
 
+## План в ОАЭ (Валера, утверждённый outline.md)
+| Шаг | Что |
+|---|---|
+| 1 | Шоурум в Дубае |
+| 2 | Первые B2B клиенты |
+| 3 | Франшиза |
+
 ## Не хватает
-* [УТОЧНИТЬ: скриншоты WhatsApp с ценами Company A и B и подтверждение себестоимости 185 AED ($50) положить в materials/aluminante/, сейчас у цен нет файла источника]
+* [УТОЧНИТЬ: скриншоты WhatsApp с ценами Company A и B и подтверждение себестоимости $50 (≈ AED 184 at 3.6725) положить в materials/aluminante/, сейчас у цен нет файла источника]
 * [УТОЧНИТЬ: сумма инвестиций и на что пойдут деньги]
 * [УТОЧНИТЬ: что получает инвестор: доля, процент прибыли, срок, выход]
 * [УТОЧНИТЬ: себестоимость с доставкой в ОАЭ: логистика, пошлина, VAT]
@@ -99,6 +129,6 @@
 
 | Что | Значение | Первоисточник данных | Ссылка |
 |---|---|---|---|
-| Сданные виллы и таунхаусы в Дубае, 1 полугодие 2026 | около 5 900, рост 22,6% | Cavendish Maxwell, Dubai Residential Market Performance | [Khaleej Times, 30.07.2026](https://www.khaleejtimes.com/business/dubai-delivers-record-24800-new-homes-in-h1-2026-as-market-matures) |
+| Сданные виллы и таунхаусы в Дубае, 1 полугодие 2026 | 5 900, рост 22,6% (база сравнения в статье не указана) | Cavendish Maxwell, Dubai Residential Market Performance | [Khaleej Times, 30.07.2026](https://www.khaleejtimes.com/business/dubai-delivers-record-24800-new-homes-in-h1-2026-as-market-matures) |
 | Виллы в стадии строительства в Дубае | 68 297, из них продано 58 349 | fäm Properties | [Gulf News, 21.08.2026](https://gulfnews.com/business/property/dubai-has-96585-homes-entering-the-market-in-2026-83-are-already-sold-1.500647675) |
-| Гостиничный фонд Дубая, конец 2025 | более 154 000 номеров, 827 отелей; загрузка 80,7% | Dubai Department of Economy and Tourism (DET) | [Khaleej Times, 09.02.2026](https://www.khaleejtimes.com/business/dubai-tourism-hits-record-1959m-visitors-in-2025-marking-third-year-of-growth) |
+| Гостиничный фонд Дубая, декабрь 2025 | более 154 000 номеров, 827 отелей; средняя загрузка за 2025 год 80,7% (годом раньше 78,2%) | Dubai Department of Economy and Tourism (DET) | [Khaleej Times, 09.02.2026](https://www.khaleejtimes.com/business/dubai-tourism-hits-record-1959m-visitors-in-2025-marking-third-year-of-growth) |
