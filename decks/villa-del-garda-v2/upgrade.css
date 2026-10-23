@@ -80,3 +80,32 @@ html.portrait .reveal .pay-slide .glass { padding: 4px 14px 12px; }
 html.portrait .reveal .pay-slide table.paytbl td, html.portrait .reveal .pay-slide table.paytbl th { padding: 14px 6px; }
 .reveal table.paytbl td:nth-child(3), .reveal table.paytbl td:nth-child(4) { white-space: nowrap; }
 html.portrait .reveal .pay-slide .pay-side .glass { padding: 20px 20px 8px; }
+
+/* ===== Cards on sand slides: deep sand line + soft shadow, same family as the dark slides ===== */
+.reveal[data-theme="empire"] section.light { --card-line: #9C6B36; }
+.reveal section.light .roi-out, .reveal section.light .mg-out, .reveal section.light .dp {
+  border-top: 2px solid var(--card-line); box-shadow: 0 14px 40px rgba(60,35,10,.22);
+}
+
+/* ===== ROI slide: calculator and card fill the slide ===== */
+html:not(.portrait) .reveal .roi-slide .roi { grid-template-columns: 1fr 820px; gap: 88px; margin-top: 52px; align-items: stretch; }
+html:not(.portrait) .reveal .roi-slide .roi-in { display: flex; flex-direction: column; }
+html:not(.portrait) .reveal .roi-slide .tabs { margin-bottom: 40px; }
+html:not(.portrait) .reveal .roi-slide .tabs button { font-size: 24px; padding: 16px 40px; }
+html:not(.portrait) .reveal .roi-slide .roi .big-in { font-size: calc(132px * var(--d-scale)); margin: 14px 0 18px; }
+html:not(.portrait) .reveal .roi-slide .roi .usd { font-size: 28px; margin: -6px 0 30px; }
+html:not(.portrait) .reveal .roi-slide .roi input[type=range] { height: 44px; margin: 8px 0 4px; }
+html:not(.portrait) .reveal .roi-slide .roi .chips { margin: 30px 0 34px; flex-wrap: wrap; gap: 14px; }
+html:not(.portrait) .reveal .roi-slide .roi .chips button { font-size: 22px; padding: 14px 24px; }
+html:not(.portrait) .reveal .roi-slide .roi .m-rent .src, html:not(.portrait) .reveal .roi-slide .roi .m-resale .src { font-size: 21px; line-height: 1.5; margin-top: 4px; max-width: 760px; }
+html:not(.portrait) .reveal .roi-slide .roi label.mt { margin-top: 18px; }
+html:not(.portrait) .reveal .roi-slide .roi-out { padding: 44px 52px 40px; display: flex; flex-direction: column; }
+html:not(.portrait) .reveal .roi-slide .formula { font-size: 30px; margin-bottom: 26px; }
+html:not(.portrait) .reveal .roi-slide .rows div { font-size: 24px; padding: 12px 0; }
+html:not(.portrait) .reveal .roi-slide .rows dd .usd-in { font-size: 18px; }
+html:not(.portrait) .reveal .roi-slide .result { margin-top: auto; padding-top: 22px; }
+html:not(.portrait) .reveal .roi-slide .tabs { align-self: flex-start; }
+html.portrait .reveal table.cmp thead th { font-size: 17px; letter-spacing: .06em; }
+html.portrait .reveal table.cmp th, html.portrait .reveal table.cmp td { padding-left: 6px; padding-right: 6px; }
+html.portrait .reveal .roi .m-rent .src, html.portrait .reveal .roi .m-resale .src { font-size: 26px; line-height: 1.45; }
+html.portrait .reveal .roi-slide .rows dd .usd-in { font-size: 20px; }
