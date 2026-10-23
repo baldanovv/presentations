@@ -1,0 +1,82 @@
+/* ===== v2 upgrade, stage 1: hybrid style =====
+   Empire Bold base (flat cards, sand line on top) + glass panels on photo slides.
+   Layered over deck.css, only for decks/villa-del-garda-v2. */
+
+.reveal[data-theme="empire"] {
+  --cap-font: 'Montserrat', system-ui, sans-serif;
+  --radius: 4px;
+  --glass-bg: rgba(14,14,14,.74);
+  --glass-line: rgba(244,241,236,.16);
+  --glass-blur: blur(16px) saturate(115%);
+}
+/* secondary text on dark slides: lighter than deck.css #A7A198 */
+.reveal[data-theme="empire"] section.dark { --muted: #C4BDB2; }
+
+/* ===== Small caps labels: Montserrat, tracked, readable at 1280x720 ===== */
+.reveal .label,
+.reveal .contact .k,
+.reveal .pop span,
+.reveal table.cmp thead th,
+.reveal .legend .lg-title,
+.reveal .plegend .pl-title,
+.reveal .specs dt,
+.reveal .pay-head span,
+.reveal table.paytbl th,
+.reveal .dp span,
+.reveal .calc label,
+.reveal .roi label,
+.reveal .mg-ctl label, .reveal .mg-out label {
+  font-family: var(--cap-font); font-weight: 600; text-transform: uppercase; letter-spacing: .16em; font-size: 20px;
+}
+.reveal .label { letter-spacing: .2em; }
+
+/* ===== Secondary text: lighter and 2px larger ===== */
+.reveal .usd { opacity: .88; font-size: 26px; }
+.reveal section[data-background-image] .usd { opacity: .92; }
+.reveal .pay-head .usd { font-size: 28px; }
+.reveal .dp .usd, .reveal .roi .usd { font-size: 24px; }
+.reveal .mg-rent .usd { font-size: 20px; }
+.reveal .usd-in { opacity: .88; }
+.reveal table.paytbl td:nth-child(4) { font-size: 23px; }
+.reveal .dp small { font-size: 20px; color: var(--muted); }
+.reveal .pay-side .ticks li { font-size: 24px; }
+
+/* ===== Cards on plain slides: flat panel, sand line on top ===== */
+.reveal .dp, .reveal .roi-out, .reveal .mg-out, .reveal .pay-head > div {
+  border-top: 2px solid var(--accent); border-radius: var(--radius);
+}
+.reveal .pay-head { gap: 24px; }
+.reveal .pay-head > div { background: var(--panel); padding: 26px 32px 28px; }
+.reveal .pay-head b { margin-top: 10px; }
+.reveal table.paytbl tr.ho td:first-child { box-shadow: inset 2px 0 0 var(--accent); }
+
+/* ===== Photo slides with numbers and tables: strong scrim + glass panels ===== */
+.reveal .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8,8,8,.78), rgba(8,8,8,.62) 40%, rgba(8,8,8,.74) 75%, rgba(8,8,8,.9)); }
+.reveal .glass, .reveal section[data-background-image] .pay-head > div, .reveal section[data-background-image] .dp {
+  background: var(--glass-bg); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-line); border-top: 2px solid var(--accent); border-radius: var(--radius);
+  box-shadow: 0 12px 40px rgba(0,0,0,.25);
+}
+.reveal section.pay-slide[data-background-image] { --line: rgba(244,241,236,.2); }
+.reveal .pay-slide .pay { grid-template-columns: 1fr 680px; gap: 40px; margin-top: 32px; align-items: start; }
+.reveal .pay-slide .glass { padding: 8px 28px 16px; }
+.reveal .pay-slide .pay-side .glass { padding: 26px 32px 14px; }
+.reveal .pay-slide table.paytbl td { padding: 16px 10px; }
+.reveal .pay-slide[data-background-image] table.paytbl tr.ho td { background: rgba(236,180,121,.14); }
+
+/* location slide: photo stays bright, side panel becomes glass */
+.reveal[data-theme="empire"] .area-panel {
+  background: rgba(10,10,10,.8); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+  border-left: 1px solid var(--glass-line);
+}
+
+/* phones: no blur, solid panels (cheaper to render, same contrast) */
+html.portrait .reveal .glass, html.portrait .reveal section[data-background-image] .pay-head > div,
+html.portrait .reveal section[data-background-image] .dp, html.portrait .reveal[data-theme="empire"] .area-panel {
+  -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(14,14,14,.9);
+}
+html.portrait .reveal .pay-slide .pay { gap: 32px; }
+html.portrait .reveal .pay-slide .glass { padding: 4px 14px 12px; }
+html.portrait .reveal .pay-slide table.paytbl td, html.portrait .reveal .pay-slide table.paytbl th { padding: 14px 6px; }
+.reveal table.paytbl td:nth-child(3), .reveal table.paytbl td:nth-child(4) { white-space: nowrap; }
+html.portrait .reveal .pay-slide .pay-side .glass { padding: 20px 20px 8px; }
