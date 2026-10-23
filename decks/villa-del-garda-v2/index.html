@@ -382,7 +382,7 @@
 </section>
 
 <!-- P1b ПОЧЕМУ DUBAI ISLANDS -->
-<section class="dark why-di" data-background-image="img/islands-render.jpg" data-background-size="cover">
+<section class="dark why-di" data-motion data-background-image="img/islands-render.jpg" data-background-size="cover">
   <div class="shade"></div>
   <div class="slide">
     <p class="label">Почему Dubai Islands</p>
@@ -660,7 +660,7 @@
 </section>
 
 <!-- P8 ЦЕНА И ПЛАН ОПЛАТЫ -->
-<section class="dark pay-slide" data-background-image="img/g06.jpg" data-background-size="cover" data-background-position="center">
+<section class="dark pay-slide" data-motion data-background-image="img/g06.jpg" data-background-size="cover" data-background-position="center">
   <div class="scrim"></div>
   <div class="slide">
     <p class="label">Цена и план оплаты</p>
@@ -695,7 +695,7 @@
 </section>
 
 <!-- P9 ROI -->
-<section class="light roi-slide">
+<section class="light roi-slide" data-motion>
   <div class="slide">
     <p class="label">Расчёт ROI</p>
     <h2>Сколько вы заработаете</h2>
@@ -1063,6 +1063,7 @@
   Reveal.on('ready', e => countUp(e.currentSlide));
   Reveal.on('slidechanged', e => countUp(e.currentSlide));
 </script>
-<script src="upgrade.js?v=20261023003"></script>
+<script src="../../assets/vendor/motion-13.4.6.js"></script>
+<script src="upgrade.js?v=20261023004"></script>
 </body>
 </html>
