@@ -5,8 +5,8 @@
 ## Aluminante в ОАЭ (инвестиционное предложение)
 
 ### Статус
-- **Черновик принят** Валерой 24.10.2026. Собраны все 15 слайдов по `decks/aluminante/outline.md`, английская версия: `decks/aluminante/en/index.html`. Русской версии (`ru/`) ещё нет.
-- **Ссылка:** https://baldanovv.github.io/presentations/decks/aluminante/en/
+- **Черновик принят** 24.10.2026. Собраны все 15 слайдов по `decks/aluminante/outline.md`, английская версия `decks/aluminante/en/index.html`, русская `decks/aluminante/ru/index.html` (общие `deck.css`, `img/`, `video/`, `js/`). В русской числа по русским правилам, валюта после числа (184 AED, CSS `:lang(ru)`).
+- **Ссылки:** EN https://baldanovv.github.io/presentations/decks/aluminante/en/ и RU https://baldanovv.github.io/presentations/decks/aluminante/ru/ (обе noindex, на главную не добавлены). Переключатель EN / RU в правом верхнем углу открывает тот же слайд в другой версии (`js/deck.js`, адрес из `<link rel="alternate" hreflang>`).
 - **Концепция A «Каталог»:** белый фон, Playfair Display и Inter, чёрно белый бренд. Токены в `decks/aluminante/deck.css`.
 - **Факты:** `decks/aluminante/facts.md`, у каждой цифры источник (brochure, showroom, plisse = три PDF Aluminante в `materials/aluminante/`, вне git). Все фото деки найдены в этих PDF, номера страниц в разделе «Фото в деке».
 - **Проверки:** `fact-checker` прогнан по всей деке, расхождения исправлены. Он не открывает PDF (нет pdftoppm), поэтому showroom стр. 3 to 6 и 10 сверены вручную через PyMuPDF. Брошюру стр. 12 и plisse стр. 7 пока не сверял никто. Текст проверен `deck-toolkit/tools/check_text.py`: замечаний нет.
@@ -51,12 +51,12 @@
 | 14 | какой пакет шоурума |
 | 14 | цель по B2B клиентам |
 | 14 | условия франшизы |
-| 15 | кто команда в ОАЭ, роль Валеры, контакт |
+| 15 | команда в ОАЭ и контакт |
 
-Вне деки: скриншоты WhatsApp с ценами Company A и B Валера кладёт в `materials/aluminante/` сам.
+Вне деки: скриншоты WhatsApp с ценами Company A и B кладутся в `materials/aluminante/` вручную.
 
 ### Итоги по инструментам
-- **21st:** ключ заменён и принят (free, 2 выдачи кода в день), но поиск компонентов всю сессию отвечал «catalog search failed», поиск шаблонов работал. Bento Grid Валера скопировал с сайта вручную, переписан на HTML и CSS. Квоту MCP не тратили.
+- **21st:** ключ заменён и принят (free, 2 выдачи кода в день), но поиск компонентов всю сессию отвечал «catalog search failed», поиск шаблонов работал. Bento Grid скопирован с сайта вручную и переписан на HTML и CSS. Квоту MCP не тратили.
 - **Magic UI** (MIT): лучший источник для дек. Взяли iPhone (слайд 6), Bento Grid (9), идеи Number Ticker (4) и Highlighter (2). Код всегда переписываем на vanilla.
 - **rough-notation (Highlighter) не брать:** меряет экранные пиксели, а reveal масштабирует слайд, в Zoom круг съезжает. Свой SVG с `pathLength="1"` работает при любом масштабе.
 - **Aceternity UI:** лицензия запрещает публиковать исходники, в публичный репозиторий не берём.

@@ -189,6 +189,17 @@
 .reveal .next .src { margin-top: var(--s-6); color: #9A9A9A; }
 .reveal .dark .foot { color: #9A9A9A; }
 
+/* ===== Language switcher EN / RU (js/deck.js): screen pixels, outside the scaled slide, hidden in PDF ===== */
+.reveal .lang { position: absolute; top: 10px; right: 10px; z-index: 40; display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: rgba(255,255,255,.92); color: var(--c-ink); font: 500 13px/1 var(--font-body); letter-spacing: .12em; }
+.reveal .lang a { color: var(--c-muted); text-decoration: none; padding: 4px 2px; }
+.reveal .lang a:hover, .reveal .lang a:focus-visible { color: var(--c-ink); text-decoration: underline; }
+.reveal .lang span { color: var(--c-line); }
+html.print-pdf .reveal .lang { display: none; }
+
+/* ===== Russian version: the currency goes after the number (184 AED) ===== */
+:lang(ru) .reveal .rows b small { margin: 0 0 0 14px; }
+:lang(ru) .reveal .rows .hl { margin-left: 0; margin-right: 34px; }
+
 /* ===== Slides still to be built ===== */
 .reveal .todo .body { justify-content: center; }
 .reveal .todo h2 { color: var(--c-caption); }
@@ -239,8 +250,8 @@ html.portrait .reveal .bm .src { padding-top: var(--s-2); }
 html.portrait .reveal .bc .d .long { display: none; }
 html.portrait .reveal .bc .d .short { display: inline; }
 /* phones: photo on top of the B2B card, text below on the dark layer; small cards dark all over, text runs full width */
-html.portrait .reveal .bc.big { padding-top: 200px; }
-html.portrait .reveal .bc.big::before { background: linear-gradient(rgba(10,10,10,0), rgba(10,10,10,.15) 25%, rgba(10,10,10,.7) 40%); }
+html.portrait .reveal .bc.big { padding-top: 140px; }
+html.portrait .reveal .bc.big::before { background: linear-gradient(rgba(10,10,10,0), rgba(10,10,10,.15) 10%, rgba(10,10,10,.72) 24%); }
 html.portrait .reveal .bc:not(.big)::before { background: linear-gradient(90deg, rgba(10,10,10,.72), rgba(10,10,10,.6)); }
 html.portrait .reveal .bc:not(.big) > p { max-width: none; }
 html.portrait .reveal .stats.three { grid-template-columns: 1fr; gap: var(--s-5); margin-top: var(--s-6); }
