@@ -71,7 +71,78 @@
 .reveal .rows .us { background: var(--c-ink); color: var(--c-paper); padding-left: 36px; padding-right: 36px; margin: 0 -36px; border-bottom: 0; }
 .reveal .rows .us .who { color: var(--c-paper); opacity: .8; }
 .reveal .rows .us .fill { background: var(--c-paper); height: 8px; }
+.reveal .rows .hl { position: relative; display: inline-block; margin-left: 30px; margin-right: 6px; }
+/* hand drawn circle after Magic UI Highlighter (rough-notation): own SVG, sized by the number, so reveal scaling never shifts it */
+.reveal .rows .hl svg { position: absolute; left: -22px; right: -16px; top: -12px; bottom: -14px; width: calc(100% + 38px); height: calc(100% + 26px); overflow: visible; }
+.reveal .rows .hl path { fill: none; stroke: var(--c-paper); stroke-width: 3; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 0; }
 .reveal .opp .note { margin-top: auto; padding-top: var(--s-4); max-width: 900px; }
+
+/* ===== Common layout: photo column on the left, content on the right (slides 2, 4) ===== */
+.reveal .side-photo { position: absolute; left: 0; top: 0; bottom: 0; width: 640px; background: center / cover no-repeat; }
+.reveal .side-body { position: absolute; left: 780px; right: var(--pad-x); top: var(--pad-top); bottom: var(--pad-bottom); display: flex; flex-direction: column; }
+.reveal .side-body h2, .reveal .body h2 { font-size: var(--t-h2); line-height: 1.08; margin-top: var(--s-3); }
+.reveal .has-side .foot { left: 780px; }
+.reveal .body { position: absolute; left: var(--pad-x); right: var(--pad-x); top: var(--pad-top); bottom: var(--pad-bottom); display: flex; flex-direction: column; }
+.reveal .src { margin-top: auto; padding-top: var(--s-4); font: 400 var(--t-note)/1.5 var(--font-body); color: var(--c-muted); }
+
+/* ===== 04 Factory in numbers: Number Ticker (data-m="count" in js/motion-effects.js) ===== */
+.reveal .stats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-6) var(--s-7); margin-top: var(--s-6); }
+.reveal .stats > div { border-top: 1px solid var(--c-line); padding-top: var(--s-4); }
+.reveal .stats b { display: block; font: 400 128px/1 var(--font-display); white-space: nowrap; font-variant-numeric: lining-nums tabular-nums; }
+.reveal .stats b small { font-size: .34em; margin-left: 12px; letter-spacing: .02em; }
+.reveal .stats > div > span { display: block; font: 400 var(--t-body) var(--font-body); color: var(--c-muted); margin-top: var(--s-2); }
+
+/* ===== 06 Lau Plisse: facts on the left, two vertical videos in iPhone frames (js/iphone.js) ===== */
+.reveal .prod .body { right: 1040px; }
+.reveal .prod .lead { font: italic 400 var(--t-lead) var(--font-display); color: var(--c-muted); margin-top: var(--s-2); }
+.reveal .facts { margin: var(--s-6) 0 0; padding: 0; border-top: 1px solid var(--c-line); }
+.reveal .facts li { list-style: none; font: 400 var(--t-body)/1.45 var(--font-body); padding: 18px 0; border-bottom: 1px solid var(--c-line); }
+.reveal .facts li b { font-weight: 500; }
+.reveal .phones { position: absolute; right: var(--pad-x); top: 130px; bottom: 130px; display: flex; gap: var(--s-6); align-items: center; }
+.reveal .iphone { position: relative; height: 100%; display: inline-block; line-height: 0; }
+.reveal .iphone .iphone-screen { position: absolute; overflow: hidden; background: #000; }
+.reveal .iphone video { width: 100%; height: 100%; object-fit: cover; display: block; margin: 0; max-width: none; max-height: none; }
+.reveal .iphone svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.reveal .iphone .f-edge { fill: #404040; }
+.reveal .iphone .f-body { fill: #1F1F1F; }
+.reveal .iphone .f-island { fill: #0A0A0A; }
+
+/* ===== 14 Roadmap: own vanilla timeline (Aceternity Timeline not used: its licence bars publishing the source) ===== */
+.reveal .timeline { position: relative; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: var(--s-6); margin: var(--s-7) 0 0; padding: var(--s-6) 0 0; }
+.reveal .timeline::before { content: ''; position: absolute; left: 0; right: 0; top: 11px; height: 1px; background: var(--c-line); }
+.reveal .timeline .axis { position: absolute; left: 0; right: 0; top: 11px; height: 2px; background: var(--c-ink); transform-origin: left center; }
+.reveal .timeline li { list-style: none; position: relative; }
+.reveal .timeline li::before { content: ''; position: absolute; left: 0; top: calc(-1 * var(--s-6) + 2px); width: 18px; height: 18px; border-radius: 50%; background: var(--c-paper); border: 2px solid var(--c-ink); box-sizing: border-box; }
+.reveal .timeline .when { font: 500 var(--t-cap) var(--font-body); letter-spacing: var(--cap-track); text-transform: uppercase; color: var(--c-muted); }
+.reveal .timeline h3 { font: 400 52px/1.1 var(--font-display); margin-top: var(--s-2); }
+.reveal .timeline p { font: 400 var(--t-body)/1.45 var(--font-body); color: var(--c-muted); margin-top: var(--s-3); }
+
+/* ===== 09 Business model: Bento Grid after Magic UI, no hover (Zoom), cards appear one by one (data-m="card") ===== */
+.reveal .bento { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.15fr 1fr; grid-template-rows: 1fr 1fr; gap: var(--s-4); margin-top: var(--s-4); }
+.reveal .bc { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: var(--s-4) var(--s-5); color: var(--c-paper);
+  background: var(--c-ink) center / cover no-repeat; border: 1px solid rgba(255,255,255,.1); }
+/* the photo is set inline (urls in the page resolve from the page), the dark layer keeps text at 4.5:1 and more */
+.reveal .bc::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(10,10,10,0), rgba(10,10,10,.12) 28%, rgba(10,10,10,.7) 47%); box-shadow: inset 0 -20px 80px -20px rgba(255,255,255,.12); }
+.reveal .bc > * { position: relative; }
+.reveal .bc.big { grid-row: 1 / 3; padding: var(--s-5); }
+/* small cards: text fills most of the height, so the dark layer runs from the left and the photo shows on the right */
+.reveal .bc:not(.big)::before { background: linear-gradient(90deg, rgba(10,10,10,.72), rgba(10,10,10,.6) 72%, rgba(10,10,10,.1) 92%, rgba(10,10,10,0)); }
+.reveal .bc:not(.big) { padding: var(--s-3) var(--s-5); }
+.reveal .bc:not(.big) h3 { font-size: 44px; }
+.reveal .bc:not(.big) > p { max-width: 74%; }
+.reveal .bc:not(.big) .m { margin-top: var(--s-2); padding-top: 12px; }
+.reveal .bc .d .short { display: none; }
+.reveal .bc .ic { position: absolute; top: var(--s-4); right: var(--s-4); width: 48px; height: 48px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 1px 4px rgba(0,0,0,.7)); }
+.reveal .bc .cap { color: #E2E2E2; }
+.reveal .bc h3 { font: 400 48px/1.1 var(--font-display); margin-top: var(--s-1); }
+.reveal .bc.big h3 { font-size: 64px; }
+.reveal .bc .d { font: 400 var(--t-body)/1.45 var(--font-body); color: #EDEDED; margin-top: var(--s-2); max-width: 760px; }
+.reveal .bc .m { margin-top: var(--s-3); padding-top: var(--s-2); border-top: 1px solid rgba(255,255,255,.22); font: 400 var(--t-small)/1.4 var(--font-body); }
+.reveal .bc .m span { font: 500 var(--t-cap) var(--font-body); letter-spacing: var(--cap-track); text-transform: uppercase; color: #E2E2E2; margin-right: 16px; }
+
+/* ===== Slides still to be built ===== */
+.reveal .todo .body { justify-content: center; }
+.reveal .todo h2 { color: var(--c-caption); }
 
 /* ===== Phones (html.portrait, set by js/deck.js): 1080x1920, scroll view =====
    On a 390px phone the slide is scaled by 0.36: 44px here is 16px on screen (body), 36px is 13px (secondary). */
@@ -93,3 +164,33 @@ html.portrait .reveal .rows > div { grid-template-columns: minmax(0, 1fr) auto; 
 html.portrait .reveal .rows .track { grid-column: 1 / -1; grid-row: 2; height: 16px; }
 html.portrait .reveal .rows b { font-size: 104px; }
 html.portrait .reveal .rows .us { padding-left: 32px; padding-right: 32px; margin: 0 -32px; }
+html.portrait .reveal .side-photo { right: 0; bottom: auto; width: auto; height: 480px; }
+html.portrait .reveal .side-body { left: 72px; right: 72px; top: 560px; bottom: 120px; }
+html.portrait .reveal .has-side .foot { left: 72px; }
+html.portrait .reveal .body { left: 72px; right: 72px; top: 140px; bottom: 120px; }
+html.portrait .reveal .side-body h2, html.portrait .reveal .body h2 { font-size: 80px; }
+html.portrait .reveal .stats { gap: var(--s-5); }
+html.portrait .reveal .stats b { font-size: 112px; }
+html.portrait .reveal .prod .body { right: 72px; bottom: 900px; }
+html.portrait .reveal .facts li { padding: 12px 0; }
+html.portrait .reveal .phones { left: 72px; right: 72px; top: auto; bottom: 140px; height: 720px; justify-content: center; }
+html.portrait .reveal .timeline { grid-template-columns: 1fr; padding: 0 0 0 var(--s-6); gap: var(--s-6); }
+html.portrait .reveal .timeline::before, html.portrait .reveal .timeline .axis { left: 8px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; transform-origin: center top; }
+html.portrait .reveal .timeline li::before { left: calc(-1 * var(--s-6)); top: 8px; }
+html.portrait .reveal .bento { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-rows: auto; align-content: start; gap: var(--s-3); }
+html.portrait .reveal .bc.big { grid-row: auto; }
+html.portrait .reveal .bc, html.portrait .reveal .bc.big { padding: var(--s-4); }
+html.portrait .reveal .bc h3, html.portrait .reveal .bc.big h3 { font-size: 60px; }
+html.portrait .reveal .bc .ic { width: 56px; height: 56px; }
+html.portrait .reveal .bm .body { bottom: 100px; }
+html.portrait .reveal .bm .bento { gap: var(--s-2); }
+html.portrait .reveal .bc, html.portrait .reveal .bc.big { padding: var(--s-3) var(--s-4); }
+html.portrait .reveal .bc .m { margin-top: var(--s-2); }
+html.portrait .reveal .bm .src { padding-top: var(--s-2); }
+html.portrait .reveal .bc .d .long { display: none; }
+html.portrait .reveal .bc .d .short { display: inline; }
+/* phones: photo on top of the B2B card, text below on the dark layer; small cards dark all over, text runs full width */
+html.portrait .reveal .bc.big { padding-top: 200px; }
+html.portrait .reveal .bc.big::before { background: linear-gradient(rgba(10,10,10,0), rgba(10,10,10,.15) 25%, rgba(10,10,10,.7) 40%); }
+html.portrait .reveal .bc:not(.big)::before { background: linear-gradient(90deg, rgba(10,10,10,.72), rgba(10,10,10,.6)); }
+html.portrait .reveal .bc:not(.big) > p { max-width: none; }
