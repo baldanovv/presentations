@@ -4,7 +4,7 @@
 
 /* ===== Tokens ===== */
 :root {
-  /* color: black and white only; contrast on white: ink 19.8:1, muted 6.9:1, caption 5.7:1 */
+  /* color: black and white only; contrast on white: ink 19.8:1, muted 6.9:1, caption 5.3:1; white .8 on ink 12.6:1 (WCAG AA 4.5:1) */
   --c-ink: #0A0A0A;
   --c-paper: #FFFFFF;
   --c-muted: #5A5A5A;
@@ -18,6 +18,7 @@
   --t-h1: 132px; --t-h2: 72px; --t-num: 84px; --t-lead: 42px;
   --t-body: 26px; --t-small: 21px; --t-note: 20px;
   --t-cap: 20px; --cap-track: .28em;
+  --t-foot: 18px;  /* smallest text: 12px in the 1280x720 Zoom view */
 
   /* space: 8px base, spacious */
   --s-1: 8px; --s-2: 16px; --s-3: 24px; --s-4: 32px; --s-5: 48px; --s-6: 64px; --s-7: 96px; --s-8: 140px;
@@ -36,7 +37,7 @@
 .reveal h1, .reveal h2 { font-family: var(--font-display); font-weight: 400; }
 .reveal .cap { font: 500 var(--t-cap) var(--font-body); letter-spacing: var(--cap-track); text-transform: uppercase; }
 .reveal .note { font: 400 var(--t-note)/1.5 var(--font-body); color: var(--c-muted); }
-.reveal .foot { position: absolute; left: var(--pad-x); right: var(--pad-x); bottom: 44px; display: flex; justify-content: space-between; font: 500 15px var(--font-body); letter-spacing: .2em; text-transform: uppercase; color: var(--c-caption); }
+.reveal .foot { position: absolute; left: var(--pad-x); right: var(--pad-x); bottom: 44px; display: flex; justify-content: space-between; font: 500 var(--t-foot) var(--font-body); letter-spacing: .2em; text-transform: uppercase; color: var(--c-caption); }
 .reveal .title .foot { display: none; }
 .reveal .opp .foot { left: 780px; }
 .reveal .nw { white-space: nowrap; }
@@ -72,7 +73,9 @@
 .reveal .rows .us .fill { background: var(--c-paper); height: 8px; }
 .reveal .opp .note { margin-top: auto; padding-top: var(--s-4); max-width: 900px; }
 
-/* ===== Phones (html.portrait, set by js/deck.js): 1080x1920, scroll view ===== */
+/* ===== Phones (html.portrait, set by js/deck.js): 1080x1920, scroll view =====
+   On a 390px phone the slide is scaled by 0.36: 44px here is 16px on screen (body), 36px is 13px (secondary). */
+html.portrait .reveal { --t-cap: 34px; --t-note: 36px; --t-foot: 30px; --t-small: 36px; --t-body: 44px; }
 html.portrait .reveal .slides section { width: 1080px; height: 1920px; }
 html.portrait .reveal .foot, html.portrait .reveal .opp .foot { left: 72px; right: 72px; }
 html.portrait .reveal .title .logo { top: 160px; }
@@ -80,15 +83,13 @@ html.portrait .reveal .title .logo { top: 160px; }
 html.portrait .reveal .title .ghost { top: 420px; font-size: 300px; }
 html.portrait .reveal .title .t-head { top: 760px; padding: 0 72px; }
 html.portrait .reveal .title h1 { font-size: 112px; }
-html.portrait .reveal .title .lead { font-size: 44px; }
+html.portrait .reveal .title .lead { font-size: 52px; }
 html.portrait .reveal .title .band { height: 640px; }
 html.portrait .reveal .opp .o-photo { right: 0; bottom: auto; width: auto; height: 560px; }
-html.portrait .reveal .opp .o-body { left: 72px; right: 72px; top: 640px; bottom: 140px; }
+html.portrait .reveal .opp .o-photo { height: 480px; }
+html.portrait .reveal .opp .o-body { left: 72px; right: 72px; top: 560px; bottom: 120px; }
 html.portrait .reveal .opp h2 { font-size: 80px; }
 html.portrait .reveal .rows > div { grid-template-columns: minmax(0, 1fr) auto; row-gap: var(--s-2); }
 html.portrait .reveal .rows .track { grid-column: 1 / -1; grid-row: 2; height: 16px; }
-html.portrait .reveal .rows .who { font-size: 32px; }
-html.portrait .reveal .rows .who em { font-size: 26px; }
-html.portrait .reveal .rows b { font-size: 96px; }
+html.portrait .reveal .rows b { font-size: 104px; }
 html.portrait .reveal .rows .us { padding-left: 32px; padding-right: 32px; margin: 0 -32px; }
-html.portrait .reveal .opp .note { font-size: 26px; }
