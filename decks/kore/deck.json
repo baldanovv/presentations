@@ -1,0 +1,19 @@
+{
+  "title": "KORE by Imtiaz, Dubailand | Empire City Real Estate",
+  "description": "Инвестиции в Дубай: KORE by Imtiaz, wellness резиденция в Dubailand. Цены, планы оплаты, доходность. Презентация Empire City Real Estate",
+  "og_title": "KORE by Imtiaz, Dubailand",
+  "og_description": "Резиденция, построенная вокруг здоровья: тренировки, восстановление, сон. Презентация Empire City Real Estate",
+  "og_image": "https://baldanovv.github.io/presentations/decks/kore/img/og.jpg",
+  "og_url": "https://baldanovv.github.io/presentations/decks/kore/",
+  "theme_color": "#101010",
+  "lang": "ru",
+  "header": "Empire City · KORE by Imtiaz",
+  "developer": "Imtiaz",
+  "featured_logo": "imtiaz",
+  "golden_visa_note": "Важно: одна квартира в KORE дешевле 2 млн AED. Для визы нужно 2 юнита или другой проект.",
+  "map_note": "А вот район проекта, который я покажу: DLRC в Dubailand, часть центра 05 Silicon Oasis. Он входит в план города, то есть государство в него вкладывает.",
+  "map_hint": "Наведи на DLRC в легенде: подсветится вместе с центром 05.",
+  "map_focus": "и DLRC, где находится KORE",
+  "map_hots": "@map-hots.svg.html",
+  "map_legend": "@map-legend.html"
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{og_title}}">
+<meta property="og:description" content="{{og_description}}">
+<meta property="og:image" content="{{og_image}}">
+<meta property="og:url" content="{{og_url}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="{{theme_color}}">
+<link rel="preload" href="../../assets/fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/vendor/reveal.css">
+<link rel="stylesheet" href="../../templates/theme.css?v={{v}}">
+<link rel="stylesheet" href="deck.css?v={{v}}">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+{{slides}}
+
+<script src="../../assets/vendor/reveal.js?v=2"></script>
+<script src="../../assets/vendor/notes.js"></script>
+<script>
+  Reveal.initialize({ width: 1920, height: 1080, margin: 0, minScale: 0.1, maxScale: 2, center: false, hash: true,
+    transition: 'fade', transitionSpeed: 'fast', backgroundTransition: 'fade', controls: true, progress: true, plugins: [RevealNotes] });
+
+  // meta-lines: header kicker and footer folio
+  const secs = document.querySelectorAll('.slides > section'), total = secs.length;
+  secs.forEach((s, i) => {
+    const n = String(i + 1).padStart(2, '0'), sl = s.querySelector('.slide');
+    const top = document.createElement('div'); top.className = 'meta top';
+    top.innerHTML = '<span>' + n + ' · ' + (s.dataset.kicker || '') + '</span><span>{{header}}</span>';
+    const bot = document.createElement('div'); bot.className = 'meta bot';
+    bot.innerHTML = '<span><i class="mk"></i>Empire City Real Estate</span><span class="pg">' + n + ' / ' + total + '</span>';
+    sl.prepend(top); sl.appendChild(bot);
+  });
+
+  const R = 3.6725;
+  const fmt = n => (n < 0 ? '−' : '') + Math.round(Math.abs(n)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  const usd = n => (n < 0 ? '−' : '') + '$' + fmt(Math.abs(n) / R);
+  const both = n => fmt(n) + ' <small class="usd-in">' + usd(n) + '</small>';
+  const pct = n => (Math.round(n * 10) / 10).toFixed(1).replace('.', ',') + '%';
+  const chipGroup = (c, sel, fn) => c.querySelectorAll(sel + ' button').forEach(b => b.addEventListener('click', () => {
+    b.parentElement.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); fn(b);
+  }));
+
+  // Dubai 2040 map
+  document.querySelectorAll('.mapwrap').forEach(c => {
+    const desc = c.querySelector('.lg-desc'); const base = desc.textContent;
+    const parentOf = {}; c.querySelectorAll('.legend li[data-parent]').forEach(li => parentOf[li.dataset.z] = li.dataset.parent);
+    const set = z => {
+      const p = z && parentOf[z];
+      c.querySelectorAll('[data-z]').forEach(el => { const k = el.dataset.z; el.classList.toggle('on', !!z && (k === z || k === p || parentOf[k] === z)); });
+      const li = z && c.querySelector('.legend li[data-z="' + z + '"]');
+      desc.textContent = li ? li.dataset.desc : base; c.classList.toggle('focus', !!z);
+    };
+    c.querySelectorAll('[data-z]').forEach(el => { el.addEventListener('mouseenter', () => set(el.dataset.z)); el.addEventListener('click', () => set(el.dataset.z)); });
+    c.addEventListener('mouseleave', () => set(null));
+  });
+
+{{deck_script}}
+  Reveal.on('slidechanged', e => { document.querySelectorAll('video').forEach(v => { if (!e.currentSlide.contains(v)) v.pause(); }); });
+</script>
+</body>
+</html>
