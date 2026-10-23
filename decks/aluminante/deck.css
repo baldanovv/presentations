@@ -1,0 +1,94 @@
+/* ===== Aluminante deck: concept A "Catalogue" =====
+   Black and white like the brand catalogue, Didone serif headings, lots of air, large photos.
+   Slide 1920x1080 (phones: 1080x1920, scroll view). Shared by en/ and ru/. */
+
+/* ===== Tokens ===== */
+:root {
+  /* color: black and white only; contrast on white: ink 19.8:1, muted 6.9:1, caption 5.7:1 */
+  --c-ink: #0A0A0A;
+  --c-paper: #FFFFFF;
+  --c-muted: #5A5A5A;
+  --c-caption: #6B6B6B;
+  --c-line: #D9D9D9;
+  --c-ghost: #EFEFEF;   /* decorative giant words only, never text to read */
+
+  /* type: both fonts have Cyrillic */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --t-h1: 132px; --t-h2: 72px; --t-num: 84px; --t-lead: 42px;
+  --t-body: 26px; --t-small: 21px; --t-note: 20px;
+  --t-cap: 20px; --cap-track: .28em;
+
+  /* space: 8px base, spacious */
+  --s-1: 8px; --s-2: 16px; --s-3: 24px; --s-4: 32px; --s-5: 48px; --s-6: 64px; --s-7: 96px; --s-8: 140px;
+  --pad-x: 140px; --pad-top: 120px; --pad-bottom: 100px;
+
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+/* ===== Base ===== */
+.reveal { font-family: var(--font-body); color: var(--c-ink); }
+.reveal .slides { text-align: left; }
+.reveal .slides section { width: 1920px; height: 1080px; padding: 0; box-sizing: border-box; --bg: var(--c-paper); background: var(--bg); color: var(--c-ink); }
+.reveal .slides section.dark { --bg: var(--c-ink); color: var(--c-paper); }
+.reveal .s { position: absolute; inset: 0; overflow: hidden; }
+.reveal p, .reveal h1, .reveal h2, .reveal h3 { margin: 0; text-shadow: none; letter-spacing: 0; text-transform: none; color: inherit; }
+.reveal h1, .reveal h2 { font-family: var(--font-display); font-weight: 400; }
+.reveal .cap { font: 500 var(--t-cap) var(--font-body); letter-spacing: var(--cap-track); text-transform: uppercase; }
+.reveal .note { font: 400 var(--t-note)/1.5 var(--font-body); color: var(--c-muted); }
+.reveal .foot { position: absolute; left: var(--pad-x); right: var(--pad-x); bottom: 44px; display: flex; justify-content: space-between; font: 500 15px var(--font-body); letter-spacing: .2em; text-transform: uppercase; color: var(--c-caption); }
+.reveal .title .foot { display: none; }
+.reveal .opp .foot { left: 780px; }
+.reveal .nw { white-space: nowrap; }
+
+/* ===== Logo: black box with tracked caps, as on the catalogue covers ===== */
+.reveal .logo { width: 300px; height: 168px; background: var(--c-ink); color: var(--c-paper); display: grid; place-content: center; text-align: center; }
+.reveal .logo b { font: 300 26px var(--font-body); letter-spacing: .32em; padding-left: .32em; }
+.reveal .logo i { font: italic 400 19px var(--font-display); margin-top: 6px; opacity: .85; }
+
+/* ===== 01 Title ===== */
+.reveal .title .logo { position: absolute; left: 50%; top: var(--s-7); transform: translateX(-50%); }
+.reveal .title .ghost { position: absolute; left: 0; right: 0; top: 300px; text-align: center; font: 400 400px/1 var(--font-display); color: var(--c-ghost); letter-spacing: .04em; pointer-events: none; }
+.reveal .title .t-head { position: absolute; left: 0; right: 0; top: 370px; text-align: center; }
+.reveal .title h1 { font-size: var(--t-h1); line-height: 1.02; }
+.reveal .title .lead { font: italic 400 var(--t-lead) var(--font-display); color: var(--c-muted); margin-top: var(--s-3); }
+.reveal .title .cap { margin-top: var(--s-5); }
+.reveal .title .band { position: absolute; left: 0; right: 0; bottom: 0; height: 300px; background: center 60% / cover no-repeat; }
+
+/* ===== 02 Opportunity: three prices, thin lines in proportion to the price ===== */
+.reveal .opp .o-photo { position: absolute; left: 0; top: 0; bottom: 0; width: 640px; background: center / cover no-repeat; }
+.reveal .opp .o-body { position: absolute; left: 780px; right: var(--pad-x); top: var(--pad-top); bottom: var(--pad-bottom); display: flex; flex-direction: column; }
+.reveal .opp h2 { font-size: var(--t-h2); line-height: 1.08; margin-top: var(--s-3); }
+.reveal .rows { margin-top: var(--s-5); border-top: 1px solid var(--c-line); }
+.reveal .rows > div { display: grid; grid-template-columns: 350px minmax(0, 1fr) 270px; align-items: center; gap: var(--s-4); padding: 20px 0 18px; border-bottom: 1px solid var(--c-line); }
+.reveal .rows .who { font: 400 var(--t-body) var(--font-body); color: var(--c-muted); }
+.reveal .rows .who em { display: block; font-style: normal; font-size: var(--t-small); margin-top: 6px; }
+.reveal .rows .track { height: 40px; display: flex; align-items: center; }
+.reveal .rows .fill { display: block; height: 2px; width: calc(var(--v) / var(--max) * 100%); background: var(--c-ink); transform-origin: left center; }
+.reveal .rows b { font: 400 var(--t-num)/1 var(--font-display); white-space: nowrap; text-align: right; font-variant-numeric: lining-nums; }
+.reveal .rows b small { font-size: .38em; letter-spacing: .1em; margin-right: 14px; vertical-align: .55em; }
+.reveal .rows .us { background: var(--c-ink); color: var(--c-paper); padding-left: 36px; padding-right: 36px; margin: 0 -36px; border-bottom: 0; }
+.reveal .rows .us .who { color: var(--c-paper); opacity: .8; }
+.reveal .rows .us .fill { background: var(--c-paper); height: 8px; }
+.reveal .opp .note { margin-top: auto; padding-top: var(--s-4); max-width: 900px; }
+
+/* ===== Phones (html.portrait, set by js/deck.js): 1080x1920, scroll view ===== */
+html.portrait .reveal .slides section { width: 1080px; height: 1920px; }
+html.portrait .reveal .foot, html.portrait .reveal .opp .foot { left: 72px; right: 72px; }
+html.portrait .reveal .title .logo { top: 160px; }
+/* the ghost word sits above the headline, not behind it: no overlap with text to read */
+html.portrait .reveal .title .ghost { top: 420px; font-size: 300px; }
+html.portrait .reveal .title .t-head { top: 760px; padding: 0 72px; }
+html.portrait .reveal .title h1 { font-size: 112px; }
+html.portrait .reveal .title .lead { font-size: 44px; }
+html.portrait .reveal .title .band { height: 640px; }
+html.portrait .reveal .opp .o-photo { right: 0; bottom: auto; width: auto; height: 560px; }
+html.portrait .reveal .opp .o-body { left: 72px; right: 72px; top: 640px; bottom: 140px; }
+html.portrait .reveal .opp h2 { font-size: 80px; }
+html.portrait .reveal .rows > div { grid-template-columns: minmax(0, 1fr) auto; row-gap: var(--s-2); }
+html.portrait .reveal .rows .track { grid-column: 1 / -1; grid-row: 2; height: 16px; }
+html.portrait .reveal .rows .who { font-size: 32px; }
+html.portrait .reveal .rows .who em { font-size: 26px; }
+html.portrait .reveal .rows b { font-size: 96px; }
+html.portrait .reveal .rows .us { padding-left: 32px; padding-right: 32px; margin: 0 -32px; }
+html.portrait .reveal .opp .note { font-size: 26px; }
