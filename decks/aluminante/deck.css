@@ -144,6 +144,12 @@
 .reveal .stats.three { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-6); margin-top: var(--s-7); }
 .reveal .stats.three b { font-size: 112px; }
 
+/* ===== 14 Roadmap: first year target under the timeline ===== */
+.reveal .road .timeline { margin-top: var(--s-5); }
+.reveal .stats.goal { margin-top: var(--s-5); gap: var(--s-4) var(--s-7); }
+.reveal .stats.goal > div { padding-top: var(--s-3); }
+.reveal .stats.goal b { font-size: 80px; }
+
 /* ===== 07 Sun protection: three product cards, photo on top ===== */
 .reveal .trio { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-5); margin-top: var(--s-5); }
 .reveal .trio article { display: flex; flex-direction: column; min-height: 0; }
@@ -231,9 +237,9 @@ html.portrait .reveal .body { left: 72px; right: 72px; top: 140px; bottom: 120px
 html.portrait .reveal .side-body h2, html.portrait .reveal .body h2 { font-size: 80px; }
 html.portrait .reveal .stats { gap: var(--s-5); }
 html.portrait .reveal .stats b { font-size: 112px; }
-html.portrait .reveal .prod .body { right: 72px; bottom: 900px; }
+html.portrait .reveal .prod .body { right: 72px; bottom: 820px; }
 html.portrait .reveal .facts li { padding: 12px 0; }
-html.portrait .reveal .phones { left: 72px; right: 72px; top: auto; bottom: 140px; height: 720px; justify-content: center; }
+html.portrait .reveal .phones { left: 72px; right: 72px; top: auto; bottom: 140px; height: 640px; justify-content: center; }
 html.portrait .reveal .timeline { grid-template-columns: 1fr; padding: 0 0 0 var(--s-6); gap: var(--s-6); }
 html.portrait .reveal .timeline::before, html.portrait .reveal .timeline .axis { left: 8px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; transform-origin: center top; }
 html.portrait .reveal .timeline li::before { left: calc(-1 * var(--s-6)); top: 8px; }
@@ -250,7 +256,7 @@ html.portrait .reveal .bm .src { padding-top: var(--s-2); }
 html.portrait .reveal .bc .d .long { display: none; }
 html.portrait .reveal .bc .d .short { display: inline; }
 /* phones: photo on top of the B2B card, text below on the dark layer; small cards dark all over, text runs full width */
-html.portrait .reveal .bc.big { padding-top: 140px; }
+html.portrait .reveal .bc.big { padding-top: 96px; }
 html.portrait .reveal .bc.big::before { background: linear-gradient(rgba(10,10,10,0), rgba(10,10,10,.15) 10%, rgba(10,10,10,.72) 24%); }
 html.portrait .reveal .bc:not(.big)::before { background: linear-gradient(90deg, rgba(10,10,10,.72), rgba(10,10,10,.6)); }
 html.portrait .reveal .bc:not(.big) > p { max-width: none; }
@@ -270,3 +276,10 @@ html.portrait .reveal .ladder li.ref { margin: 0 -32px; padding-left: 32px; padd
 html.portrait .reveal .cols { grid-template-columns: 1fr; gap: var(--s-5); margin-top: var(--s-6); }
 html.portrait .reveal .next h2 { font-size: 92px; }
 html.portrait .reveal .next .lead { font-size: 52px; }
+/* phones: the first year slide is the longest, timeline and target are tighter */
+html.portrait .reveal .road .timeline { gap: var(--s-4); margin-top: var(--s-4); }
+html.portrait .reveal .road .timeline p:not(.when) { margin-top: var(--s-1); }
+html.portrait .reveal .road .timeline h3 { margin-top: 4px; }
+html.portrait .reveal .stats.goal { grid-template-columns: 1fr 1fr; gap: var(--s-3); margin-top: var(--s-4); }
+html.portrait .reveal .stats.goal b { font-size: 64px; }
+html.portrait .reveal .road .src { padding-top: var(--s-2); }
