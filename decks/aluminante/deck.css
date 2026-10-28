@@ -144,11 +144,18 @@
 .reveal .stats.three { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-6); margin-top: var(--s-7); }
 .reveal .stats.three b { font-size: 112px; }
 
-/* ===== 14 Roadmap: first year target under the timeline ===== */
-.reveal .road .timeline { margin-top: var(--s-5); }
-.reveal .stats.goal { margin-top: var(--s-5); gap: var(--s-4) var(--s-7); }
-.reveal .stats.goal > div { padding-top: var(--s-3); }
-.reveal .stats.goal b { font-size: 80px; }
+/* ===== 14 Two year plan: table and the year the investment comes back ===== */
+.reveal .plan { width: 100%; margin-top: var(--s-5); border-collapse: collapse; font: 400 var(--t-body)/1.3 var(--font-body); }
+.reveal .plan th { font: 500 var(--t-cap) var(--font-body); letter-spacing: var(--cap-track); text-transform: uppercase; color: var(--c-muted); text-align: right; padding: 0 0 var(--s-2); border-bottom: 2px solid var(--c-ink); }
+.reveal .plan td { padding: 14px 0; border-bottom: 1px solid var(--c-line); text-align: right; font: 400 44px/1.1 var(--font-display); font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
+.reveal .plan td:first-child { text-align: left; font: 400 var(--t-body)/1.3 var(--font-body); color: var(--c-muted); white-space: normal; }
+.reveal .plan th:not(:first-child), .reveal .plan td:not(:first-child) { width: 26%; padding-left: var(--s-4); }
+.reveal .plan tr.key td { border-bottom: 0; background: var(--c-ink); color: var(--c-paper); }
+.reveal .plan tr.key td:first-child { color: var(--c-paper); padding-left: 24px; }
+.reveal .plan tr.key td:last-child { padding-right: 24px; }
+.reveal .back { display: flex; align-items: baseline; gap: var(--s-4); margin-top: var(--s-4); }
+.reveal .back b { font: 400 64px/1 var(--font-display); white-space: nowrap; }
+.reveal .back p { font: 400 var(--t-body)/1.4 var(--font-body); }
 
 /* ===== 07 Sun protection: three product cards, photo on top ===== */
 .reveal .trio { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-5); margin-top: var(--s-5); }
@@ -192,6 +199,8 @@
 .reveal .next .lead { font: italic 400 var(--t-lead) var(--font-display); color: #C8C8C8; margin-top: var(--s-4); }
 .reveal .next .then { font: 400 var(--t-body) var(--font-body); color: #C8C8C8; margin-top: var(--s-4); }
 .reveal .next .who { font: 400 var(--t-body) var(--font-body); color: #C8C8C8; margin-top: var(--s-6); }
+.reveal .next .who.sub { margin-top: var(--s-2); }
+.reveal .next .who b { color: var(--c-paper); font-weight: 500; }
 .reveal .next .src { margin-top: var(--s-6); color: #9A9A9A; }
 .reveal .dark .foot { color: #9A9A9A; }
 
@@ -276,10 +285,7 @@ html.portrait .reveal .ladder li.ref { margin: 0 -32px; padding-left: 32px; padd
 html.portrait .reveal .cols { grid-template-columns: 1fr; gap: var(--s-5); margin-top: var(--s-6); }
 html.portrait .reveal .next h2 { font-size: 92px; }
 html.portrait .reveal .next .lead { font-size: 52px; }
-/* phones: the first year slide is the longest, timeline and target are tighter */
-html.portrait .reveal .road .timeline { gap: var(--s-4); margin-top: var(--s-4); }
-html.portrait .reveal .road .timeline p:not(.when) { margin-top: var(--s-1); }
-html.portrait .reveal .road .timeline h3 { margin-top: 4px; }
-html.portrait .reveal .stats.goal { grid-template-columns: 1fr 1fr; gap: var(--s-3); margin-top: var(--s-4); }
-html.portrait .reveal .stats.goal b { font-size: 64px; }
-html.portrait .reveal .road .src { padding-top: var(--s-2); }
+/* phones: plan table keeps three columns, numbers smaller, the payback line stacks */
+html.portrait .reveal .plan td { font-size: 40px; }
+html.portrait .reveal .plan th:not(:first-child), html.portrait .reveal .plan td:not(:first-child) { width: 30%; padding-left: var(--s-2); }
+html.portrait .reveal .back { flex-direction: column; gap: var(--s-1); }
